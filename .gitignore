@@ -7,6 +7,7 @@
 /coverage
 
 API-Key.js
+config.js
 
 # production
 /build
