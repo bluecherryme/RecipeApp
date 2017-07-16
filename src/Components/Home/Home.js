@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Navbar from './Navbar';
 
 
 export default class Home extends Component{
@@ -6,6 +7,7 @@ export default class Home extends Component{
         return(
             <div className="home">
                 <h1>Home</h1>
+                <Navbar/>
             </div>
         );
     }
