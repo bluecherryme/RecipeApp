@@ -15,9 +15,11 @@ ReactDOM.render(
             <Switch>
                 <Route exact path='/' component={App}/>
                 <Route path='/search' component={Search}/>
-                <Route path='/myaccount' component={MyAccount}/>
+                <Route path='/login' component={MyAccount}/>
             </Switch>
         </Router>
     </Provider>
     , document.getElementById('root'));
 registerServiceWorker();
+
+

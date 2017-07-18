@@ -12,9 +12,18 @@ class Cards extends Component{
             <div className="cards">
                 <h1>Cards</h1>
                 <div className='search-results'>           
-                {recipes.map(recipe=>{
-                    return <SingleCard recipe={recipe} key={recipe.id}/>;
-                })}
+                {   recipes.results 
+                    ?
+                    (recipes.results.map(recipe=>{
+                    return <SingleCard recipe={recipe} key={recipe.id} 
+                    image={`https://spoonacular.com/recipeImages/${recipe.image}`}
+                    />}))
+                    :
+                    (recipes.map(recipe=>{
+                    return <SingleCard recipe={recipe} key={recipe.id}
+                    image={recipe.image}
+                    />}))
+                }
                 </div>
             </div>
         );

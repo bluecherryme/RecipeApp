@@ -1,57 +1,40 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getRecipes} from './../../redux/getSearchResults';
+import Form from './Form';
+import {getRecipesByIngredients} from './../../redux/getSearchResults';
+import {getRecipesByName} from './../../redux/getSearchResults';
 
 
 class Search extends Component{
     constructor(props){
         super(props);
 
-        this.state = {searchTerm:''}
+        this.state = {
+            byRecipe : true
+        }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event){
-        this.setState({searchTerm:event.target.value});
-    }
-
-    handleSubmit(event){
-        event.preventDefault();
-        this.props.getRecipes(this.state.searchTerm);
-        this.setState({searchTerm:''});
+    toggleSwitch(){
+        
     }
 
     componentDidMount() {
-    this.props.getRecipes('potatoes,bacon,broccoli');
+    this.props.getRecipesByIngredients('potatoes,bacon,broccoli');
   }
     
-
     render(){
         return(
             <div className="search-section">
                 <div className="landing-top-left">
                     <h1>Search</h1>
-                    <form 
-                    className="search"
-                    onSubmit={ this.handleSubmit }
-                    >
-                        <input 
-                        type="text" 
-                        className="search-field"
-                        placeholder="e.g. potatoes, bacon, broccoli..."
-                        value={ this.state.searchTerm }   
-                        onChange= { this.handleChange }             
-                        />
-                        <button className="search-btn btn btn-primary">
-                        SEARCH RECIPES 
-                        </button>
-                    </form>
+                    <button className='btnByName'>Search Recipes by Name</button>
+                    <button className='btnByIngredients'>Search Recipes by Name</button>
+                    <Form getRecipes={this.props.getRecipesByIngredients}/>
                 </div>
             </div>
         );
     }
 }
 
-export default connect(null, { getRecipes })(Search);
+export default connect(null, { getRecipesByName, getRecipesByIngredients })(Search);

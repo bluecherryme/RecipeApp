@@ -5,15 +5,14 @@ import './SingleCard.css';
 export default class SingleCard extends Component{
 
     render(){
-        var {id,title,image,usedIngredientCount} = this.props.recipe;
+        var {id,title,usedIngredientCount} = this.props.recipe;
         return(
             <div>
                 <div className='col-md-4 recipe-card' key={id} 
-                    style={{"backgroundImage":`url(${image})`}}>
+                    style={{"backgroundImage":`url(${this.props.image})`}}>
                     
                     <div className="overlay">
                         
-                        {console.log(title+image+usedIngredientCount+id)}
                     </div>                                   
                 </div>
             </div>
