@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Form from './Form';
 import {getRecipesByIngredients} from './../../redux/getSearchResults';
 import {getRecipesByName} from './../../redux/getSearchResults';
+import './search.css';
 
 
 class Search extends Component{
@@ -10,13 +11,27 @@ class Search extends Component{
         super(props);
 
         this.state = {
-            byRecipe : true
+            byName : false
         }
-
+        
+        this.toggleByIngredients = this.toggleByIngredients.bind(this);
+        this.toggleByName = this.toggleByName.bind(this);
     }
 
-    toggleSwitch(){
-        
+    toggleByName(){
+        if(!this.state.byName){
+            this.setState({
+                byName:true
+            })
+        }
+    }
+
+    toggleByIngredients(){
+        if(this.state.byName){
+            this.setState({
+                byName:false
+            })
+        }
     }
 
     componentDidMount() {
@@ -28,9 +43,23 @@ class Search extends Component{
             <div className="search-section">
                 <div className="landing-top-left">
                     <h1>Search</h1>
-                    <button className='btnByName'>Search Recipes by Name</button>
-                    <button className='btnByIngredients'>Search Recipes by Name</button>
-                    <Form getRecipes={this.props.getRecipesByIngredients}/>
+                    <button className='btnByName' onClick={this.toggleByName}
+                    style={this.state.byName ? {'color':'red'} : {'color':'black'}}>
+                        Search Recipes by Name</button>
+                    <button className='btnByIngredients' onClick={this.toggleByIngredients}
+                    style={!this.state.byName ? {'color':'red'} : {'color':'black'}}>
+                    
+                    Search Recipes by Ingredients</button>
+                    {
+                        this.state.byName
+                        ?
+                        <Form getRecipes={this.props.getRecipesByName} 
+                            placeholder={"e.g. potato salad"}/>
+                        :
+                        <Form getRecipes={this.props.getRecipesByIngredients} 
+                            placeholder="e.g. potatoes, bacon, broccoli..."/>
+                    }
+                    
                 </div>
             </div>
         );

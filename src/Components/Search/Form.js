@@ -32,7 +32,7 @@ export default class Form extends Component{
                 <input 
                 type="text" 
                 className="search-field"
-                placeholder="e.g. potatoes, bacon, broccoli..."
+                placeholder={this.props.placeholder}
                 value={ this.state.searchTerm }   
                 onChange= { this.handleChange }             
                 />

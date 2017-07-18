@@ -1,34 +1,59 @@
 import axios from 'axios';
 import API_Key from './../API-Key';
 
-
 const initialState = { searchResults: [] };
 
 const GET_RECIPES = 'GET_RECIPES';
+var APIcallsLeft = 5000;
 
 export function getRecipesByIngredients(searchTerm='potatoes,broccoli,bacon'){
     searchTerm = searchTerm.split(/[\W]+/).map(each=>each.toLowerCase()).join('%2C');
-    return{
-        type: GET_RECIPES,
-        payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=${searchTerm}&limitLicense=false&number=3&ranking=1`,
-        {
-            headers:{"X-Mashape-Key" : API_Key,
-                    "Accept" : "application/json"}
-        })
-        .then((payload)=>payload)
+    if (APIcallsLeft>0){
+        return{
+            type: GET_RECIPES,
+            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=${searchTerm}&limitLicense=false&number=3&ranking=1`,
+            {
+                headers:{"X-Mashape-Key" : API_Key,
+                        "Accept" : "application/json"}
+            })
+            .then((payload)=>{
+                    APIcallsLeft = payload.headers["x-ratelimit-requests-remaining"];
+                    console.log(APIcallsLeft);                
+                    return payload;
+                })
+        }
+    } else{
+        alert("Sorry, no more API calls left today. Please try again tomorrow!");
+        return{
+            type: GET_RECIPES,
+            payload: {}
+        }
     }
 }
 
 export function getRecipesByName(searchTerm='potato salad'){
     searchTerm = searchTerm.split(/[\W]+/).map(each=>each.toLowerCase()).join('%2C');
-    return{
-        type: GET_RECIPES,
-        payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?instructionsRequired=true&limitLicense=false&number=3&offset=0&query=${searchTerm}`,
-        {
-            headers:{"X-Mashape-Key" : API_Key,
-                    "Accept" : "application/json"}
-        })
-        .then((payload)=>payload)
+    if(APIcallsLeft>0){
+        return{
+            type: GET_RECIPES,
+            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?instructionsRequired=true&limitLicense=false&number=3&offset=0&query=${searchTerm}`,
+            {
+                headers:{"X-Mashape-Key" : API_Key,
+                        "Accept" : "application/json"}
+            })
+            .then(
+                (payload)=>{
+                    APIcallsLeft = payload.headers["x-ratelimit-requests-remaining"];
+                    console.log(APIcallsLeft);
+                    return payload;
+                })
+        }
+    } else{
+        alert("Sorry, no more API calls left today. Please try again tomorrow!");  
+        return{
+            type: GET_RECIPES,
+            payload: {}
+        }      
     }
 }
 
