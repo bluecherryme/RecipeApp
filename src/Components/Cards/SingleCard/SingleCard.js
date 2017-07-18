@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getCurrentRecipe} from './../../../redux/getRecipeById';
 import './SingleCard.css';
 
 
-export default class SingleCard extends Component{
+class SingleCard extends Component{
 
     render(){
         var {id,title,usedIngredientCount,missedIngredientCount,likes,readyInMinutes} = this.props.recipe;
@@ -11,7 +13,7 @@ export default class SingleCard extends Component{
                 <div className='col-md-4 recipe-card' key={id} 
                     style={{"backgroundImage":`url(${this.props.image})`}}>
                     
-                    <div className="overlay">
+                    <div className="overlay" onClick={()=>this.props.getCurrentRecipe(id)}>
                         <p>{title}</p>
                         {
                             usedIngredientCount
@@ -32,4 +34,5 @@ export default class SingleCard extends Component{
     }
 }
 
+export default connect(null,{getCurrentRecipe})(SingleCard);
 

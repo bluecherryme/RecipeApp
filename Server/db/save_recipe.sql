@@ -1,6 +1,5 @@
-insert into Recipes(RecipeID,Name,Image,Ingredients,Instructions,linktoinstructions,
-preptime,nutritionid)
-values($1,$2,$3,$4,$5,$6,$7,$8);
+insert into Recipes(id,title,extendedIngredients,instructions,sourceURL,aggregateLikes,image,servings,readyInMinutes)
+values($1,$2,$3,$4,$5,$6,$7,$8,$9);
 
 insert into savedrecipes(clientid,recipeid)
-values ($1,$2);
+values ($10,$1);

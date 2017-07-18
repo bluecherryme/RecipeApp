@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import PromiseMiddleware from 'redux-promise-middleware';
 import saveRecipe from './saveRecipe';
-import setCurrentRecipe from './setCurrentRecipe';
+import getRecipeById from './getRecipeById';
 import getSearchResults from './getSearchResults';
 import updateShoppingList from './updateShoppingList';
 
 const reducer = combineReducers({
     savedRecipes:saveRecipe,
-    currentRecipe:setCurrentRecipe,
+    currentRecipe:getRecipeById,
     searchResults:getSearchResults,
     shoppingList:updateShoppingList
 })

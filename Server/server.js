@@ -47,8 +47,8 @@ app.get('/hello', function(request, response){
 	response.send('Hello world');
 });
 
-const clientsController = require('./controllers/clients');
-app.post('/api/client', clientsController.addClient);
+// const clientsController = require('./controllers/clients');
+// app.post('/api/client', clientsController.addClient);
 
 // app.get('/me', function(req,res,next){
 // 		if(!req.user){
@@ -62,9 +62,9 @@ app.post('/api/client', clientsController.addClient);
 // 	}
 // );
 
-// app.get(('*'),function(req,res){
-//     res.sendFile(`${__dirname}/../build/index.html`)
-// });
+//SAVE RECIPE
+const recipeController = require('./controllers/recipes_Controller');
+app.post('api/saveRecipe', recipeController.saveRecipe);
 
 app.listen(8080, function(){
 	console.log('listening on port 8080');
