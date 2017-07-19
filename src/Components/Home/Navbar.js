@@ -3,13 +3,10 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css';
 
-function login(  ) {
-  
+function login(){
     axios.get('/login').then( response => {
-
       console.log(response.data)
-    })
-  
+    })  
 }
 
 export default function(){

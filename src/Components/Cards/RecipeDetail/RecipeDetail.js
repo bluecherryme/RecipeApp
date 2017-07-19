@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import saveRecipe from './func_saveRecipe';
 
 class RecipeDetail extends Component{
     render(){
     var extendedIngredients = this.props.recipe.currentRecipe.extendedIngredients || [];
     var {id, instructions, sourceURL, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
-    console.log(this.props.recipe.currentRecipe);
+    console.log(extendedIngredients);
         return(
             <div>
                 <h1>Recipe Detail</h1>
@@ -42,7 +42,9 @@ class RecipeDetail extends Component{
                     }
                 </div>
                 <div className="btn-container">
-                    <button className="save">save recipe</button>
+                    <button className="save" 
+                    onClick={()=>saveRecipe(id,title,extendedIngredients,instructions,sourceURL,aggregateLikes,image,servings,readyInMinutes)}>
+                        save recipe</button>
                     <button className="addToShoppingList">add to shopping list</button>                    
                 </div>
             </div>

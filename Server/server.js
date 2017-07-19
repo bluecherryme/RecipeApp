@@ -20,7 +20,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.use( express.static( `${__dirname}/../build` ) );
+app.use( express.static( `${__dirname}/../build` ) );
  
 //database
 massive(connectionString).then(dbInstance=>app.set('db', dbInstance));
@@ -63,6 +63,10 @@ app.post('/api/client', clientsController.addClient);
 //SAVE RECIPE
 const recipeController = require('./controllers/recipes_Controller');
 app.post('/api/saveRecipe', recipeController.saveRecipe);
+
+//SAVE INGREDIENTS
+const shoppingListController = require('./controllers/shoppinglist_Controller');
+app.post('/api/saveIngredient', shoppingListController.saveIngredient);
 
 app.listen(8080, function(){
 	console.log('listening on port 8080');
