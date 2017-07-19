@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css';
 
-function login(){
-    axios.get('/login').then( response => {
-      console.log(response.data)
-    })  
-}
+function handleClick() {
+    axios.get('/auth/me')
+    .then( res => {
+      console.log('res', res);
+    })
+  }
 
 export default function(){
     return(
@@ -15,7 +16,15 @@ export default function(){
             <Link className="link" to={'/'}>Home</Link>
             <Link className="link" to={'/search'}>Search</Link>
             <Link className="link" to={'/login'}>MyAccount</Link>
-            <button onClick={()=>login()}>Login</button>
+            <button 
+          className='btn btn-default' 
+          onClick={ handleClick() }
+          >Who is logged in?</button>
+       
+            <a href='http://localhost:8080/auth'>
+          <button 
+            className='btn btn-default'>Log in</button>
+        </a>
         </div>
     );
 }

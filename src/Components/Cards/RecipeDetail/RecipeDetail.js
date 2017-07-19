@@ -6,6 +6,7 @@ import saveIngredient from './func_saveToShoppingList';
 class RecipeDetail extends Component{
 
     submitIngredient(extendedIngredients){
+            //eslint-disable-next-line
         extendedIngredients.map(ingredient=>{
             saveIngredient(ingredient.originalString);
         })
