@@ -15,7 +15,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path='/' component={App}/>
                 <Route path='/search' component={Search}/>
-                <Route path='/login' component={MyAccount}/>
+                <Route path='/myaccount' component={MyAccount}/>
             </Switch>
         </Router>
     </Provider>

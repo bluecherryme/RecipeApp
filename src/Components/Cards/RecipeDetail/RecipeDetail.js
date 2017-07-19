@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import saveRecipe from './func_saveRecipe';
+import saveIngredient from './func_saveToShoppingList';
 
 class RecipeDetail extends Component{
+
+    submitIngredient(extendedIngredients){
+        extendedIngredients.map(ingredient=>{
+            saveIngredient(ingredient.originalString);
+        })
+    }
+
     render(){
     var extendedIngredients = this.props.recipe.currentRecipe.extendedIngredients || [];
     var {id, instructions, sourceURL, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
@@ -45,7 +53,10 @@ class RecipeDetail extends Component{
                     <button className="save" 
                     onClick={()=>saveRecipe(id,title,extendedIngredients,instructions,sourceURL,aggregateLikes,image,servings,readyInMinutes)}>
                         save recipe</button>
-                    <button className="addToShoppingList">add to shopping list</button>                    
+                    <button className="addToShoppingList"
+                        onClick={()=>this.submitIngredient(extendedIngredients)}
+                        >add to shopping list
+                    </button>                    
                 </div>
             </div>
         );
