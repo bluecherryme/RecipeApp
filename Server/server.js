@@ -8,7 +8,7 @@ const config = require('./config.js');
 const cors = require('cors');
 const connectionString = "postgres://rhvhjsmnvwxxmr:a8c5871cff63bfa3b67f80060cebda682c5c7242e41095158b499fd0b64e9bae@ec2-54-163-254-143.compute-1.amazonaws.com:5432/d1t2gbql3b3rof?ssl=true";
 
-const app = module.exports = express();  //->establishes a server on the root path of the app
+const app = module.exports = express();  
 app.use(bodyParser.json());
 app.use(session({
 	secret: config.secret,
@@ -21,10 +21,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //app.use( express.static( `${__dirname}/../build` ) );
-
-/////////////
-// DATABASE //
-/////////////
+ 
+//database
 massive(connectionString).then(dbInstance=>app.set('db', dbInstance));
 
 app.use(cors());
@@ -47,8 +45,8 @@ app.get('/hello', function(request, response){
 	response.send('Hello world');
 });
 
-// const clientsController = require('./controllers/clients');
-// app.post('/api/client', clientsController.addClient);
+const clientsController = require('./controllers/clients');
+app.post('/api/client', clientsController.addClient);
 
 // app.get('/me', function(req,res,next){
 // 		if(!req.user){
@@ -64,7 +62,7 @@ app.get('/hello', function(request, response){
 
 //SAVE RECIPE
 const recipeController = require('./controllers/recipes_Controller');
-app.post('api/saveRecipe', recipeController.saveRecipe);
+app.post('/api/saveRecipe', recipeController.saveRecipe);
 
 app.listen(8080, function(){
 	console.log('listening on port 8080');

@@ -12,6 +12,7 @@ class RecipeDetail extends Component{
             <div>
                 <h1>Recipe Detail</h1>
                 <div className="ingredients">
+                    <h2>{title}</h2>
                     <img src={image} alt="Current Recipe"/>
                     <h2>Ingredients</h2>
                     <ul>
