@@ -7,8 +7,47 @@ const Auth0Strategy = require('passport-auth0');
 const config = require('./config.js');
 const cors = require('cors');
 const connectionString = "postgres://rhvhjsmnvwxxmr:a8c5871cff63bfa3b67f80060cebda682c5c7242e41095158b499fd0b64e9bae@ec2-54-163-254-143.compute-1.amazonaws.com:5432/d1t2gbql3b3rof?ssl=true";
+const app = module.exports = express();  
 
-const app = express();  
+massive(connectionString).then(dbInstance=>{
+	app.set('db', dbInstance);
+
+	dbInstance.set_Schema()
+	.then(()=>console.log('table successfully reset'))
+	.catch((err)=>console.log(err));
+
+	passport.use(new Auth0Strategy({
+    domain: config.domain,
+    clientID: config.clientID,
+    clientSecret: config.clientSecret,
+    callbackURL: config.callbackURL
+},
+    function(accessToken,refreshToken,extraParams,profile,done){
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+	// profile has all the information from the user
+	const {given_name,family_name,name,email,picture} = profile;
+	//calls to database
+	const id = profile.identities[0].user_id;
+
+	dbInstance.getUser([id]).then((user)=>{
+		console.log('hey',user);
+		if (user){
+			done(null,user[0])
+		} else {
+			dbInstance.creatUser([id,given_name,family_name,name,email,picture])
+			.then((err,user)=>{
+			done(null,user[0])
+			})
+		}
+	})  
+        return done(null,'done');
+    }
+)
+);
+
+});
+
 
 app.use(bodyParser.json());
 app.use(session({
@@ -25,20 +64,7 @@ app.use(passport.session());
 //AUTH0
 
 app.use(cors());
-passport.use(new Auth0Strategy({
-    domain: config.domain,
-    clientID: config.clientID,
-    clientSecret: config.clientSecret,
-    callbackURL: config.callbackURL
-},
-    function(accessToken,refreshToken,extraParams,profile,done){
-		console.log(profile);
-    // accessToken is the token to call Auth0 API (not needed in the most cases)
-    // extraParams.id_token has the JSON Web Token
-    // profile has all the information from the user
-        return done(null,{id:2,username:'Joe',email:'joe@joe.com'});
-    }
-));
+
 
 
 passport.serializeUser(function(user, done) {
@@ -69,7 +95,6 @@ app.get('/auth/logout', function(req, res) {
 
 
 //database
-massive(connectionString).then(dbInstance=>app.set('db', dbInstance));
 
 const clientsController = require('./controllers/clients');
 app.post('/api/client', clientsController.addClient);

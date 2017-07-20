@@ -1,0 +1,1 @@
+select * from clients where clientId = $1;
