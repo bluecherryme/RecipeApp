@@ -10,4 +10,4 @@ create table clients(
 );
 
 insert into clients(clientId,given_name,family_name,name,email,picture)
-values ('103777885688777289032','jo','s','jo s', 'daf','asdf');
+values ('1','jo','s','jo s', 'daf','asdf');

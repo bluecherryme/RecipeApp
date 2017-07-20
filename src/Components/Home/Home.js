@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
 import Navbar from './Navbar';
-
+import './Home.css'
 
 
 export default class Home extends Component{
     render(){
         return(
             <div className="home">
-                <h1>Home</h1>
+             <div className="overlay">
                 <Navbar/>
+                <div className="header">
+                    <h4>Let's</h4>
+                    <h1>COOK</h1>
+                    <p>The bestrecipes all over the world</p>
+                </div>
+             </div>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default function saveIngredient(item) {
-    axios.post('/api/saveIngredient',{
+    axios.post('http://localhost:8080/api/saveIngredient',{
     "clientId":1,
 	"item":item,
     })

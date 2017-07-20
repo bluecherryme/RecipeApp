@@ -12,39 +12,39 @@ const app = module.exports = express();
 massive(connectionString).then(dbInstance=>{
 	app.set('db', dbInstance);
 
-	dbInstance.set_Schema()
-	.then(()=>console.log('table successfully reset'))
-	.catch((err)=>console.log(err));
+	// dbInstance.set_Schema()
+	// .then(()=>console.log('table successfully reset'))
+	// .catch((err)=>console.log(err));
 
 	passport.use(new Auth0Strategy({
-    domain: config.domain,
-    clientID: config.clientID,
-    clientSecret: config.clientSecret,
-    callbackURL: config.callbackURL
-},
-    function(accessToken,refreshToken,extraParams,profile,done){
-    // accessToken is the token to call Auth0 API (not needed in the most cases)
-    // extraParams.id_token has the JSON Web Token
-	// profile has all the information from the user
-	const {given_name,family_name,name,email,picture} = profile;
-	//calls to database
-	const id = profile.identities[0].user_id;
+		domain: config.domain,
+		clientID: config.clientID,
+		clientSecret: config.clientSecret,
+		callbackURL: config.callbackURL
+		},
 
-	dbInstance.getUser([id]).then((user)=>{
-		console.log('hey',user);
-		if (user){
-			done(null,user[0])
-		} else {
-			dbInstance.creatUser([id,given_name,family_name,name,email,picture])
-			.then((err,user)=>{
-			done(null,user[0])
-			})
-		}
-	})  
-        return done(null,'done');
-    }
-)
-);
+			function(accessToken,refreshToken,extraParams,profile,done){
+			// accessToken is the token to call Auth0 API (not needed in the most cases)
+			// extraParams.id_token has the JSON Web Token
+			// profile has all the information from the user
+				const {given_name,family_name,name,email,picture} = profile._json;
+				//calls to database
+				const id = profile.identities[0].user_id;
+
+				dbInstance.getUser([id]).then((user)=>{
+					if (user[0]){
+						done(null,user[0])
+					} else {
+						dbInstance.createUser([id,given_name,family_name,name,email,picture])
+						.then((user)=>{
+						console.log('user',user[0]);				
+						done(null,user[0])
+						})
+					}
+				})
+			}
+		)
+	);
 
 });
 
@@ -80,12 +80,16 @@ passport.deserializeUser(function(user, done) {
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', 
-{ successRedirect: 'http://localhost:3000/'}));
+{ successRedirect: 'http://localhost:3000/myaccount'}));
 
 app.get('/auth/me', function(req, res) {
-  if (!req.user) return res.status(200).send('No one logged in!');
-  res.status(200).send(req.user);  //endpoint to check if someone is logged in
+  if (!req.user) {
+	res.status(200).send('No one logged in!')
+  } else {
+  	res.status(200).send(req.user);  //endpoint to check if someone is logged in
+  }
 })
+
 app.get('/auth/logout', function(req, res) {
   req.logout();
   res.redirect('/');
