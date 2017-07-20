@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Navbar.css';
 
 function handleClick() {
-    axios.get('http://localhost:8080/auth/me')
+    axios.get('/auth/me')
     .then( res => {
       console.log('res', res);
     })
@@ -18,11 +18,11 @@ export default function(){
             <Link className="link" to={'http://localhost:8080/auth/me'}>MyAccount</Link>
             <button 
               className='btn btn-default' 
-              onClick={ handleClick() }
+              onClick={ ()=>handleClick() }
               >Who is logged in?
             </button>
        
-            <a href='http://localhost:8080/auth'>
+            <a href='http://localhost:3001/auth'>
               <button 
                 className='btn btn-default'>Log in
               </button>

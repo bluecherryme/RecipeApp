@@ -2,7 +2,6 @@
   "name": "recipe-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
   "main": "./Server/server.js",
   "dependencies": {
     "axios": "^0.16.2",
@@ -25,5 +24,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

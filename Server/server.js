@@ -92,7 +92,7 @@ app.get('/auth/me', function(req, res) {
 
 app.get('/auth/logout', function(req, res) {
   req.logout();
-  res.redirect('/');
+  res.redirect('http://localhost:3000/');
 })  //endpoint to logout out
 
 
@@ -111,6 +111,6 @@ app.post('/api/saveRecipe', recipeController.saveRecipe);
 const shoppingListController = require('./controllers/shoppinglist_Controller');
 app.post('/api/saveIngredient', shoppingListController.saveIngredient);
 
-app.listen(8080, function(){
-	console.log('listening on port 8080');
+app.listen(3001, function(){
+	console.log('listening on port 3001');
 });

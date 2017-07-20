@@ -9,10 +9,10 @@ export default class Home extends Component{
             <div className="home">
              <div className="overlay">
                 <Navbar/>
-                <div className="header">
+                <div className="heading">
                     <h4>Let's</h4>
                     <h1>COOK</h1>
-                    <p>The bestrecipes all over the world</p>
+                    <p>The best recipes all over the world</p>
                 </div>
              </div>
             </div>
