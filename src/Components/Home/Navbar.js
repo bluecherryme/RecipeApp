@@ -1,24 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
+import {getCurrentUser} from './../../redux/setCurrentUser';
 import './Navbar.css';
 
-function handleClick() {
-    axios.get('/auth/me')
-    .then( res => {
-      console.log('res', res);
-    })
-  }
+// function handleClick() {
+//     axios.get('/auth/me')
+//     .then( res => {
+//       console.log('res', res);
+//     })
+//   }
 
-export default function(){
+class Navbar extends Component{
+  render(){
+    console.log(this.props.currentUser);
     return(
         <div className="nav">
             <Link className="link" to={'/'}>Home</Link>
             <Link className="link" to={'/search'}>Search</Link>
-            <Link className="link" to={'http://localhost:8080/auth/me'}>MyAccount</Link>
+            <Link className="link" to={'/auth/me'}>MyAccount</Link>
             <button 
               className='btn btn-default' 
-              onClick={ ()=>handleClick() }
+              onClick={ this.props.getCurrentUser }
               >Who is logged in?
             </button>
        
@@ -29,4 +33,14 @@ export default function(){
             </a>
         </div>
     );
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+
+export default connect(mapStateToProps,{getCurrentUser})(Navbar);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default function saveRecipe(a,b,c,d,e,f,g,h,i) {
-    axios.post('http://localhost:8080/api/saveRecipe',{
+    axios.post('/api/saveRecipe',{
     "id":a,
 	"title":b,
 	"extendedIngredients": {"ingredients":c},
