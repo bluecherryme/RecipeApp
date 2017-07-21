@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export default function saveIngredient(item) {
+export default function saveIngredient(item,clientid) {
     axios.post('/api/saveIngredient',{
-    "clientId":1,
+    "clientId":clientid,
 	"item":item,
     })
     .then(function (response) {
