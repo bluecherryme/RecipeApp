@@ -104,6 +104,9 @@ app.get('/auth/logout', function(req, res) {
 const recipeController = require('./controllers/recipes_Controller');
 app.post('/api/saveRecipe', recipeController.saveRecipe);
 
+//GET SAVED RECIPES
+app.get('/api/recipes', recipeController.getSavedRecipes);
+
 //SAVE INGREDIENTS
 const shoppingListController = require('./controllers/shoppinglist_Controller');
 app.post('/api/saveIngredient', shoppingListController.saveIngredient);

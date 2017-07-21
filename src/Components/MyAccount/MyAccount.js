@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {getRecipes} from './../../redux/getSavedRecipes';
 
-// const userid = '103777885688777289032';
+const userid = '103777885688777289032';
 
 class MyAccount extends Component{
+    componentDidMount(){
+        getRecipes(userid);
+    }
 
     render(){
         return(
@@ -14,8 +18,9 @@ class MyAccount extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser.currentUser.data || {}
+    currentUser: state.currentUser.currentUser.data || {},
+    savedRecipes: state.savedRecipes
   }
 }
 
-export default connect(mapStateToProps)(MyAccount);
+export default connect(mapStateToProps,{getRecipes})(MyAccount);
