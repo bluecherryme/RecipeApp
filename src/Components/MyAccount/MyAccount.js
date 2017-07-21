@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+// const userid = '103777885688777289032';
+
 class MyAccount extends Component{
-    constructor(props){
-        super(props);
-
-        this.state = {currentClient:{}};
-
-    }
 
     render(){
         return(
@@ -16,4 +12,10 @@ class MyAccount extends Component{
     }
 }
 
-export default connect()(MyAccount);
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser.currentUser.data || {}
+  }
+}
+
+export default connect(mapStateToProps)(MyAccount);

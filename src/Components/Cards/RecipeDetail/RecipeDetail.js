@@ -13,10 +13,15 @@ class RecipeDetail extends Component{
     }
 
     render(){
+
+    const userid = '103777885688777289032';
     var extendedIngredients = this.props.recipe.currentRecipe.extendedIngredients || [];
     var {id, instructions, sourceURL, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
-    console.log(extendedIngredients);
+    var {clientid} = this.props.currentUser;
+    console.log('currentUser',this.props.currentUser);
+    console.log("clientid", clientid);
+    
         return(
             <div>
                 <h1>Recipe Detail</h1>
@@ -66,7 +71,8 @@ class RecipeDetail extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        recipe: state.currentRecipe
+        recipe: state.currentRecipe,
+        currentUser: state.currentUser.currentUser.data || {}
     }
 }
 

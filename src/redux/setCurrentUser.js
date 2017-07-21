@@ -9,17 +9,14 @@ export function getCurrentUser(){
         type: GET_CURRENT_USER,
         payload: axios.get('/auth/me')
                 .then( payload => {
-                console.log({payload:payload})
                 return payload;
     })
   }    
 }
 
 export default function setCurrentUser(state=initialState,action){
-        console.log("action is " , action.type);
     switch(action.type){
         case GET_CURRENT_USER + '_FULFILLED':
-            console.log("this is the reducer:" + action.payload);
             return {currentUser : action.payload}
         default:
             return state;

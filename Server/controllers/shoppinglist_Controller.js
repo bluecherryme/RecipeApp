@@ -5,6 +5,6 @@ module.exports={
         const {clientId, item} = req.body;
         dbInstance.add_shoppinglist_item([clientId, item])
         .then((()=>res.status(200).send('Data has successfully been posted to DB')))
-        .catch(()=>res.status(500).send());
+        .catch((err)=>res.status(500).send(err));
     }
 }

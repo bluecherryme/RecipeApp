@@ -100,9 +100,6 @@ app.get('/auth/logout', function(req, res) {
 
 //database
 
-const clientsController = require('./controllers/clients');
-app.post('/api/client', clientsController.addClient);
-
 //SAVE RECIPE
 const recipeController = require('./controllers/recipes_Controller');
 app.post('/api/saveRecipe', recipeController.saveRecipe);
