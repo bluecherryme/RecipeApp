@@ -65,8 +65,6 @@ app.use(passport.session());
 
 app.use(cors());
 
-
-
 passport.serializeUser(function(user, done) {
 	console.log('serializing', user);
   done(null, user);
@@ -94,9 +92,6 @@ app.get('/auth/logout', function(req, res) {
   req.logout();
   res.redirect('http://localhost:3000/');
 })  //endpoint to logout out
-
-
-
 
 //database
 
