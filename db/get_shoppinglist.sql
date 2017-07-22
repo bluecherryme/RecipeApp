@@ -1,0 +1,1 @@
+select * from shoppinglist where clientid = $1;

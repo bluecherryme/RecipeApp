@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import saveRecipe from './func_saveRecipe';
 import saveIngredient from './func_saveToShoppingList';
 
 class RecipeDetail extends Component{
@@ -56,9 +55,6 @@ class RecipeDetail extends Component{
                     }
                 </div>
                 <div className="btn-container">
-                    <button className="save" 
-                    onClick={()=>saveRecipe(id,title,extendedIngredients,instructions,sourceURL,aggregateLikes,image,servings,readyInMinutes,userid)}>
-                        save recipe</button>
                     <button className="addToShoppingList"
                         onClick={()=>this.submitIngredient(extendedIngredients,userid)}
                         >add to shopping list

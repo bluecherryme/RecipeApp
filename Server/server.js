@@ -106,6 +106,9 @@ app.get('/api/recipes', recipeController.getSavedRecipes);
 const shoppingListController = require('./controllers/shoppinglist_Controller');
 app.post('/api/saveIngredient', shoppingListController.saveIngredient);
 
+//GET SHOPPINGLIST
+app.get('/api/shoppinglist', shoppingListController.getShoppingList);
+
 app.listen(3001, function(){
 	console.log('listening on port 3001');
 });
