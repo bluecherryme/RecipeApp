@@ -8,13 +8,11 @@ export function getShoppingList(userid){
             type: GET_SHOPPINGLIST,
             payload: axios.get(`/api/shoppinglist?userid=${userid}`)
                      .then(payload=>{
-                         return payload;
+                         return payload.data;
                      })
         }
     );
 }
-
-
 
 export default function updateShoppingList(state=[],action){
     switch (action.type){
