@@ -1,1 +1,1 @@
-delete from shoppinglist;
+delete from shoppinglist where clientid = $1;

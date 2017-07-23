@@ -35,7 +35,7 @@ class Search extends Component{
     }
 
     componentDidMount() {
-    this.props.getRecipesByIngredients('potatoes,bacon,broccoli');
+    this.props.getRecipesByIngredients('potatoes,bacon,broccoli', 'GET_RECIPES');
   }
     
     render(){

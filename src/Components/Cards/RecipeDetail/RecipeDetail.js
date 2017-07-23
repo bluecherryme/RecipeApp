@@ -16,11 +16,12 @@ class RecipeDetail extends Component{
 
     const userid = '103777885688777289032';
     var extendedIngredients = this.props.recipe.currentRecipe.extendedIngredients || [];
-    var {id, instructions, sourceURL, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
+    var {id, instructions, sourceUrl, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
     var {clientid} = this.props.currentUser;
     console.log('currentUser',this.props.currentUser);
     console.log("clientid", clientid);
+    console.log("sourceurl", sourceUrl);
     
         return(
             <div>
@@ -49,15 +50,15 @@ class RecipeDetail extends Component{
                             <p>preperation time: {readyInMinutes} minutes</p>
                         </div>
                         :
-                        <p>
-                            View full instructions 
-                            <a href={sourceURL}> here</a>
-                        </p>
+                        <div>
+                            <p>View full instructions </p>
+                            <button><a href={sourceUrl}>here</a></button>
+                        </div>
                     }
                 </div>
                 <div className="btn-container">
                     <button className="save" 
-                    onClick={()=>saveRecipe(id,title,extendedIngredients,instructions,sourceURL,aggregateLikes,image,servings,readyInMinutes,userid)}>
+                    onClick={()=>saveRecipe(id,title,extendedIngredients,instructions,sourceUrl,aggregateLikes,image,servings,readyInMinutes,userid)}>
                         save recipe</button>
                     <button className="addToShoppingList"
                         onClick={()=>this.submitIngredient(extendedIngredients,userid)}

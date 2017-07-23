@@ -25,6 +25,8 @@ class Cards extends Component{
                     />}))
                 }
                 </div>
+                <button className="see-more">See More</button>
+                <button className="search-again">Search Again</button>
             </div>
         );
     }

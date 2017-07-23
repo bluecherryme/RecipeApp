@@ -17,10 +17,12 @@ module.exports={
         .then((list)=>res.status(200).send(list))
         .catch((err)=>res.status(500).send(err));
     },
+
     deleteShoppingList:(req,res,next)=>{
         const dbInstance = req.app.get('db');
-        
-        dbInstance.delete_shoppinglist()
+        const {userid} = req.query;
+
+        dbInstance.delete_shoppinglist(userid)
         .then(()=>res.status(200).send('shoppingList has been deleted'))
         .catch((err)=>res.status(500).send(err))
     }

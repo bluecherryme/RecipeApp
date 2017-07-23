@@ -18,7 +18,7 @@ export default class Form extends Component{
 
     handleSubmit(event,getRecipes){
         event.preventDefault();
-        getRecipes(this.state.searchTerm);
+        getRecipes(this.state.searchTerm,'GET_RECIPES');
         this.setState({searchTerm:''});
     }
 

@@ -5,12 +5,13 @@ const initialState = { searchResults: [] };
 
 const GET_RECIPES = 'GET_RECIPES';
 var APIcallsLeft = 5000;
+var offset = 0;
 
-export function getRecipesByIngredients(searchTerm='potatoes,broccoli,bacon'){
+export function getRecipesByIngredients(searchTerm='potatoes,broccoli,bacon', type){
     searchTerm = searchTerm.split(/[\W]+/).map(each=>each.toLowerCase()).join('%2C');
     if (APIcallsLeft>0){
         return{
-            type: GET_RECIPES,
+            type: type,
             payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=${searchTerm}&limitLicense=false&number=3&ranking=1`,
             {
                 headers:{"X-Mashape-Key" : API_Key,
@@ -25,7 +26,7 @@ export function getRecipesByIngredients(searchTerm='potatoes,broccoli,bacon'){
     } else{
         alert("Sorry, no more API calls left today. Please try again tomorrow!");
         return{
-            type: GET_RECIPES,
+            type: type,
             payload: {}
         }
     }
