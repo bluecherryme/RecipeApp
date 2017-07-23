@@ -109,6 +109,9 @@ app.post('/api/saveIngredient', shoppingListController.saveIngredient);
 //GET SHOPPINGLIST
 app.get('/api/shoppinglist', shoppingListController.getShoppingList);
 
+//DELETE SHOPPINGLIST
+app.delete('/api/delete', shoppingListController.deleteShoppingList);
+
 app.listen(3001, function(){
 	console.log('listening on port 3001');
 });

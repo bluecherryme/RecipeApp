@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import axios from 'axios';
 import {getShoppingList} from './../../redux/updateShoppingList';
 import {deleteItem} from './../../redux/updateShoppingList';
 import {addItem} from './../../redux/updateShoppingList';
 import {clearAll} from './../../redux/updateShoppingList';
-import {saveIngredient} from './../Cards/RecipeDetail/func_saveToShoppingList';
+import saveIngredient from './../Cards/RecipeDetail/func_saveToShoppingList';
 
 const userid = '103777885688777289032';
 
@@ -14,6 +15,15 @@ class MyShoppingList extends Component{
         this.state = {value:''};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.saveShoppingList = this.saveShoppingList.bind(this); 
+    }
+
+    saveShoppingList(shoppingList,clientid){
+        axios.delete('/api/delete').then().catch();
+            //eslint-disable-next-line
+        shoppingList.map(ingredient=>{
+            saveIngredient(ingredient.item,clientid);
+        })
     }
 
     handleChange(value){
@@ -26,10 +36,12 @@ class MyShoppingList extends Component{
 
     handleSubmit(e,item){
         e.preventDefault();
-        this.props.addItem({
-            clientid:userid,
-            item:item
-        })
+        if(this.state.value){
+            this.props.addItem({
+                clientid:userid,
+                item:item
+            })
+        }
         this.setState({value:''});
     }
 
@@ -67,8 +79,9 @@ class MyShoppingList extends Component{
                 <button className="clear"
                     onClick={()=>this.props.clearAll()}>Clear All
                 </button>
-                <button className="save">Save
-                
+                <button className="save"
+                    onClick={()=>this.saveShoppingList(this.props.shoppingList,userid)}
+                    >Save
                 </button>
             </div>
         );
