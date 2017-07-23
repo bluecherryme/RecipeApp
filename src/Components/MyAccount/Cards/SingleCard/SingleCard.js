@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getCurrentRecipe} from './../../../../redux/getRecipeById';
-import './SingleCard.css';
 
 
 class SingleCard extends Component{
@@ -15,7 +14,7 @@ class SingleCard extends Component{
                     
                     <div className="overlay" onClick={()=>this.props.getCurrentRecipe(id)}>
                         <p>{title}</p>
-                        <p>prep-time: {readyinminutes}</p>                                                                    
+                        <p>prep-time: {readyinminutes} minutes</p>                                                                    
                     </div>                                   
                 </div>
             </div>

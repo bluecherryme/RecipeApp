@@ -24,7 +24,7 @@ class SingleCard extends Component{
                                 <p>likes:{likes}</p>
                             </div>
                             :
-                            <p>prep-time: {readyInMinutes}</p>
+                            <p>prep-time: {readyInMinutes} minutes</p>
                         }
                                                                     
                     </div>                                   

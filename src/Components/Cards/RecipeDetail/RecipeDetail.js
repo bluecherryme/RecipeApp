@@ -46,7 +46,7 @@ class RecipeDetail extends Component{
                             <p>{instructions}</p>
                             <p>likes: {aggregateLikes}</p>
                             <p>servings: {servings}</p>
-                            <p>preperation time: {readyInMinutes}</p>
+                            <p>preperation time: {readyInMinutes} minutes</p>
                         </div>
                         :
                         <p>

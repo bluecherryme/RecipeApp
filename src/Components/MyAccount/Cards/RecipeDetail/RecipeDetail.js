@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import saveIngredient from './func_saveToShoppingList';
+import saveIngredient from './../../../Cards/RecipeDetail/func_saveToShoppingList';
 
 class RecipeDetail extends Component{
 
@@ -19,7 +19,6 @@ class RecipeDetail extends Component{
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
     var {clientid} = this.props.currentUser;
     console.log('currentUser',this.props.currentUser);
-    console.log("clientid", clientid);
     
         return(
             <div>
@@ -45,7 +44,7 @@ class RecipeDetail extends Component{
                             <p>{instructions}</p>
                             <p>likes: {aggregateLikes}</p>
                             <p>servings: {servings}</p>
-                            <p>preperation time: {readyInMinutes}</p>
+                            <p>preperation time: {readyInMinutes} minutes</p>
                         </div>
                         :
                         <p>

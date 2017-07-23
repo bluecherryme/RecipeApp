@@ -14,6 +14,7 @@ class MyAccount extends Component{
     }
 
     render(){
+        var {clientid} = this.props.currentUser;
         return(
             <div className='my-account'>
                 <h1>MyAccount</h1>
