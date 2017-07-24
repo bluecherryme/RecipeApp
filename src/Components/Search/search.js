@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Cards from './../Cards/Cards';
 import {connect} from 'react-redux';
 import Form from './Form';
 import {getRecipesByIngredients} from './../../redux/getSearchResults';
@@ -11,27 +12,29 @@ class Search extends Component{
         super(props);
 
         this.state = {
-            byName : false
+            byName : false,
+            searchTerm:''
         }
         
         this.toggleByIngredients = this.toggleByIngredients.bind(this);
         this.toggleByName = this.toggleByName.bind(this);
+        this.getSearchTerm = this.getSearchTerm.bind(this);
     }
 
     toggleByName(){
         if(!this.state.byName){
-            this.setState({
-                byName:true
-            })
+            this.setState({byName:true})
         }
     }
 
     toggleByIngredients(){
         if(this.state.byName){
-            this.setState({
-                byName:false
-            })
+            this.setState({byName:false})
         }
+    }
+
+    getSearchTerm(searchTerm){
+        this.setState({searchTerm:searchTerm});
     }
 
     componentDidMount() {
@@ -54,13 +57,16 @@ class Search extends Component{
                         this.state.byName
                         ?
                         <Form getRecipes={this.props.getRecipesByName} 
-                            placeholder={"e.g. potato salad"}/>
+                            placeholder={"e.g. potato salad"}
+                            getSearchTerm={this.getSearchTerm}/>
                         :
                         <Form getRecipes={this.props.getRecipesByIngredients} 
                             placeholder="e.g. potatoes, bacon, broccoli..."/>
                     }
                     
                 </div>
+                <Cards searchTerm={this.state.searchTerm||''}/>
+
             </div>
         );
     }

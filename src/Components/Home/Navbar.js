@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getCurrentUser} from './../../redux/setCurrentUser';
+import axios from 'axios';
 import './Navbar.css';
 
 
@@ -16,10 +17,18 @@ class Navbar extends Component{
         <div className="nav">
             <Link className="link" to={'/'}>Home</Link>
             <Link className="link" to={'/search'}>Search</Link>
+            <Link className="link" to={'/about'}>About</Link>
             {
               this.props.currentUser.clientid
               ?
+              <div>
               <Link className="link" to={'/MyAccount'}>MyAccount</Link>
+              <a href='http://localhost:3001/auth/logout'>
+                <button 
+                  className='btn btn-default'>Log out
+                </button>
+              </a>   
+              </div>
               :
               <a href='http://localhost:3001/auth'>
                 <button 

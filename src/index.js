@@ -7,6 +7,7 @@ import './index.css';
 import App from './App';
 import MyAccount from './Components/MyAccount/MyAccount';
 import Search from './Components/Search/search';
+import About from './Components/About/About';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
                 <Route exact path='/' component={App}/>
                 <Route path='/search' component={Search}/>
                 <Route path='/myaccount' component={MyAccount}/>
+                <Route path='/about' component={About}/>
             </Switch>
         </Router>
     </Provider>

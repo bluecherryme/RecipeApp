@@ -18,15 +18,16 @@ export default class Form extends Component{
 
     handleSubmit(event,getRecipes){
         event.preventDefault();
-        getRecipes(this.state.searchTerm,'GET_RECIPES');
+        this.props.getRecipes(this.state.searchTerm,'GET_RECIPES',0);
         this.setState({searchTerm:''});
+        this.props.getSearchTerm(this.state.searchTerm);
     }
 
     render(){
         return(
             <form 
                 className="search"
-                onSubmit={ (e)=>this.handleSubmit(e,this.props.getRecipes) }
+                onSubmit={ (e)=>this.handleSubmit(e) }
                 >
                 
                 <input 

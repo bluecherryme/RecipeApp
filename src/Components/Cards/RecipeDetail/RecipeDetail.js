@@ -20,8 +20,6 @@ class RecipeDetail extends Component{
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
     var {clientid} = this.props.currentUser;
     console.log('currentUser',this.props.currentUser);
-    console.log("clientid", clientid);
-    console.log("sourceurl", sourceUrl);
     
         return(
             <div>

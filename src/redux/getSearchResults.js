@@ -3,16 +3,15 @@ import API_Key from './../API-Key';
 
 const initialState = { searchResults: [] };
 
-const GET_RECIPES = 'GET_RECIPES';
+const GET_RECIPES = "GET_RECIPES";
 var APIcallsLeft = 5000;
-var offset = 0;
 
 export function getRecipesByIngredients(searchTerm='potatoes,broccoli,bacon', type){
     searchTerm = searchTerm.split(/[\W]+/).map(each=>each.toLowerCase()).join('%2C');
     if (APIcallsLeft>0){
         return{
             type: type,
-            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=${searchTerm}&limitLicense=false&number=3&ranking=1`,
+            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=${searchTerm}&limitLicense=false&number=6&ranking=1`,
             {
                 headers:{"X-Mashape-Key" : API_Key,
                         "Accept" : "application/json"}
@@ -32,12 +31,12 @@ export function getRecipesByIngredients(searchTerm='potatoes,broccoli,bacon', ty
     }
 }
 
-export function getRecipesByName(searchTerm='potato salad'){
+export function getRecipesByName(searchTerm='potato salad',type, offset){
     searchTerm = searchTerm.split(/[\W]+/).map(each=>each.toLowerCase()).join('%2C');
     if(APIcallsLeft>0){
         return{
-            type: GET_RECIPES,
-            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?instructionsRequired=true&limitLicense=false&number=3&offset=0&query=${searchTerm}`,
+            type: type,
+            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?instructionsRequired=true&limitLicense=false&number=6&offset=${offset}&query=${searchTerm}`,
             {
                 headers:{"X-Mashape-Key" : API_Key,
                         "Accept" : "application/json"}
@@ -52,7 +51,7 @@ export function getRecipesByName(searchTerm='potato salad'){
     } else{
         alert("Sorry, no more API calls left today. Please try again tomorrow!");  
         return{
-            type: GET_RECIPES,
+            type: type,
             payload: {}
         }      
     }
