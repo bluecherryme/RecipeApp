@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getRandomRecipe} from './../../redux/getRecipeById';
+import Video from './SearchVideo';
 
 
 class More extends Component{
@@ -13,6 +14,7 @@ class More extends Component{
                      className="random">Get Random Recipe
                 </button>
                 <button className="video">Search for videos</button>
+                <Video/>
             </div>
         )
     }
