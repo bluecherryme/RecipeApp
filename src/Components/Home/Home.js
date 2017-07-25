@@ -10,11 +10,16 @@ export default class Home extends Component{
              <div className="overlay">
                 <Navbar/>
                 <div className="heading">
-                    <h4>Let's</h4>
-                    <h1>COOK</h1>
-                    <p>The best recipes from all over the world</p>
+                    <div className="heading2">
+                        <h4>Let's</h4>
+                        <h1>COOK</h1>
+                        <p>The best recipes from all over the world</p>
+                    </div>
                 </div>
-             </div>
+                    <a href='#search'>
+                        <img className='arrow-down' src={require('./../../img/arrow_down.svg')} alt='arrow-down'/>
+                    </a>
+                </div>
             </div>
         );
     }

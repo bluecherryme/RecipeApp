@@ -15,28 +15,29 @@ class Navbar extends Component{
   render(){
     return(
         <div className="nav">
+          <div className="link-container">
             <Link className="link" to={'/'}>Home</Link>
             <Link className="link" to={'/search'}>Search</Link>
             <Link className="link" to={'/about'}>About</Link>
             {
               this.props.currentUser.clientid
               ?
-              <div>
+              <div className='logged-in'>
               <Link className="link" to={'/MyAccount'}>MyAccount</Link>
               <a href='http://localhost:3001/auth/logout'>
                 <button 
-                  className='btn btn-default'>Log out
+                  className='btn'>Log out
                 </button>
               </a>   
               </div>
               :
-              <a href='http://localhost:3001/auth'>
+              <a className='login-btn' href='http://localhost:3001/auth'>
                 <button 
-                  className='btn btn-default'>Log in
+                  className='btn'>Log in
                 </button>
               </a>           
             }
-       
+            </div>            
         </div>
     );
   }

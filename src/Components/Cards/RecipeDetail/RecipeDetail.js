@@ -6,10 +6,14 @@ import saveIngredient from './func_saveToShoppingList';
 class RecipeDetail extends Component{
 
     submitIngredient(extendedIngredients,clientid){
-            //eslint-disable-next-line
-        extendedIngredients.map(ingredient=>{
-            saveIngredient(ingredient.originalString,clientid);
-        })
+        if(clientid){
+                //eslint-disable-next-line
+            extendedIngredients.map(ingredient=>{
+                saveIngredient(ingredient.originalString,clientid);
+            })
+        } else {
+            alert('Please login first');
+        }
     }
 
     render(){

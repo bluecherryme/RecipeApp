@@ -43,7 +43,7 @@ class Search extends Component{
     
     render(){
         return(
-            <div className="search-section">
+            <div className="search-section" id='search'>
                 <div className="landing-top-left">
                     <h1>Search</h1>
                     <button className='btnByName' onClick={this.toggleByName}
