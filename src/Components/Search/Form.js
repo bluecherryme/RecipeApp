@@ -26,7 +26,7 @@ export default class Form extends Component{
     render(){
         return(
             <form 
-                className="search"
+                className="input search-input"
                 onSubmit={ (e)=>this.handleSubmit(e) }
                 >
                 

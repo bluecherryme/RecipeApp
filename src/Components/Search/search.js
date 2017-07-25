@@ -43,16 +43,31 @@ class Search extends Component{
     
     render(){
         return(
-            <div className="search-section" id='search'>
-                <div className="landing-top-left">
-                    <h1>Search</h1>
-                    <button className='btnByName' onClick={this.toggleByName}
-                    style={this.state.byName ? {'color':'red'} : {'color':'black'}}>
-                        Search Recipes by Name</button>
-                    <button className='btnByIngredients' onClick={this.toggleByIngredients}
-                    style={!this.state.byName ? {'color':'red'} : {'color':'black'}}>
+            <div className="search-results" id='search'>
+                <div className="search">
+                    <h1>SEARCH</h1>
+                    <button className='btn btn-large' onClick={this.toggleByName}
+                    style={
+                        this.state.byName 
+                        ? 
+                        {'color':'#F96801',
+                        'backgroundColor': 'white'} 
+                        : 
+                        {'color':'white',
+                        'backgroundColor':'#F96801'}}>
+                        by name</button>
+                    <button className='btn btn-large' onClick={this.toggleByIngredients}
+                    style={
+                        !this.state.byName 
+                        ? 
+                        {'color':'#F96801',
+                        'backgroundColor': 'white'
+                        } 
+                        : 
+                        {'color':'white',
+                        'backgroundColor':'#F96801'}}>
                     
-                    Search Recipes by Ingredients</button>
+                   by ingredients</button>
                     {
                         this.state.byName
                         ?

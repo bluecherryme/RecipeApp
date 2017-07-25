@@ -26,14 +26,14 @@ class Navbar extends Component{
               <Link className="link" to={'/MyAccount'}>MyAccount</Link>
               <a href='http://localhost:3001/auth/logout'>
                 <button 
-                  className='btn'>Log out
+                  className='btn btn-log'>Log out
                 </button>
               </a>   
               </div>
               :
               <a className='login-btn' href='http://localhost:3001/auth'>
                 <button 
-                  className='btn'>Log in
+                  className='btn btn-log'>Log in
                 </button>
               </a>           
             }

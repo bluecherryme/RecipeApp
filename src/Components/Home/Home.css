@@ -1,6 +1,6 @@
 .home{
     width: 99vw;
-    height: 90vh;
+    height: 100vh;
     background-image: url('./../../img/background1.jpeg');
     background-color: orange;
     background-size: cover;
@@ -51,4 +51,9 @@ a{
     display: block;
     left: 50%;
     margin-left:-25px;
+}
+
+.btn-log:hover{
+  color: #F96801;
+  border-color: #F96801;
 }
