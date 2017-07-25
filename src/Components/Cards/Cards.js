@@ -32,12 +32,10 @@ class Cards extends Component{
     }
     
     render(){
-        console.log(this.props.searchTerm)
-        console.log('offset', this.state.offset);
         var recipes = this.props.recipes.searchResults;
         return(
             <div className="cards">
-                <h1>Cards</h1>
+                <h1>RECIPES</h1>
                 <div className='search-results'>           
                 {   recipes.results 
                     ?

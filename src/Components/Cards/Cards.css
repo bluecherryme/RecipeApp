@@ -1,4 +1,17 @@
+.cards{
+    width: 100vw;
+    height: 100vh;
+    background-color:orange;
+    background-image: url("./../../img/background3.jpeg");
+    background-size: cover;
+    color: white;
+}
+
 .search-results{
     display: flex;
     flex-flow: wrap;
+}
+
+.cards>h1{
+    margin-left: 20vw;
 }

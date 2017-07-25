@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './search.css';
 
 
 export default class Form extends Component{
@@ -29,16 +29,16 @@ export default class Form extends Component{
                 className="input search-input"
                 onSubmit={ (e)=>this.handleSubmit(e) }
                 >
-                
+                <img className='arrow-right' src={require('./../../img/arrow_right.svg')} alt='arrow-down'/>
                 <input 
                 type="text" 
-                className="search-field"
+                className="input-field"
                 placeholder={this.props.placeholder}
                 value={ this.state.searchTerm }   
                 onChange= { this.handleChange }             
                 />
-                <button className="search-btn btn btn-primary">
-                    SEARCH RECIPES 
+                <button className="search-btn">
+                    <img className='search-icon' src={require('./../../img/search.svg')} alt='search'/>
                 </button>
         </form>
             
