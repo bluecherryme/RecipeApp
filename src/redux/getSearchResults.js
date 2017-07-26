@@ -1,6 +1,7 @@
 import axios from 'axios';
 import API_Key from './../API-Key';
 
+
 const initialState = { searchResults: [] };
 
 const GET_RECIPES = "GET_RECIPES";
@@ -11,7 +12,7 @@ export function getRecipesByIngredients(searchTerm='potatoes,broccoli,bacon', ty
     if (APIcallsLeft>0){
         return{
             type: type,
-            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=${searchTerm}&limitLicense=false&number=6&ranking=1`,
+            payload: axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=${searchTerm}&limitLicense=false&number=37&ranking=1`,
             {
                 headers:{"X-Mashape-Key" : API_Key,
                         "Accept" : "application/json"}

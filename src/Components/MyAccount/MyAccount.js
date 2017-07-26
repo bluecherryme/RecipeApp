@@ -4,6 +4,8 @@ import {getRecipes} from './../../redux/getSavedRecipes';
 import RecipeDetail from './Cards/RecipeDetail/RecipeDetail';
 import Cards from './Cards/Cards';
 import MyShoppingList from './MyShoppingList'
+import Navbar from './../../Components/Home/Navbar';
+import Footer from './../../Components/Footer/footer';
 import './MyAccount.css';
 
 const userid = '103777885688777289032';
@@ -17,10 +19,12 @@ class MyAccount extends Component{
         var {clientid} = this.props.currentUser;
         return(
             <div className='my-account'>
+                <Navbar/>
                 <h1>MyAccount</h1>
                 <Cards recipes={this.props.savedRecipes}/>
                 <MyShoppingList/>
                 <RecipeDetail/>
+                <Footer/>
             </div>
         );
     }

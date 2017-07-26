@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import saveRecipe from './func_saveRecipe';
 import saveIngredient from './func_saveToShoppingList';
+import './RecipeDetail.css'
 
 class RecipeDetail extends Component{
 
@@ -23,11 +24,9 @@ class RecipeDetail extends Component{
     var {id, instructions, sourceUrl, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
     var {clientid} = this.props.currentUser;
-    console.log('currentUser',this.props.currentUser);
     
         return(
-            <div>
-                <h1>Recipe Detail</h1>
+            <div className='recipe-detail'>
                 <div className="ingredients">
                     <h2>{title}</h2>
                     <img src={image} alt="Current Recipe"/>

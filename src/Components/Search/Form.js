@@ -21,6 +21,8 @@ export default class Form extends Component{
         this.props.getRecipes(this.state.searchTerm,'GET_RECIPES',0);
         this.setState({searchTerm:''});
         this.props.getSearchTerm(this.state.searchTerm);
+        window.scrollBy(0,650);
+    
     }
 
     render(){

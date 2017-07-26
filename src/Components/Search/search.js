@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Cards from './../Cards/Cards';
 import {connect} from 'react-redux';
 import Form from './Form';
+import Nav
 import {getRecipesByIngredients} from './../../redux/getSearchResults';
 import {getRecipesByName} from './../../redux/getSearchResults';
 import './search.css';
@@ -20,7 +21,7 @@ class Search extends Component{
         this.toggleByName = this.toggleByName.bind(this);
         this.getSearchTerm = this.getSearchTerm.bind(this);
     }
-
+    
     toggleByName(){
         if(!this.state.byName){
             this.setState({byName:true})
@@ -76,6 +77,7 @@ class Search extends Component{
                             getSearchTerm={this.getSearchTerm}/>
                         :
                         <Form getRecipes={this.props.getRecipesByIngredients} 
+                            getSearchTerm={this.getSearchTerm}
                             placeholder="e.g. potatoes, bacon, broccoli..."/>
                     }
                     

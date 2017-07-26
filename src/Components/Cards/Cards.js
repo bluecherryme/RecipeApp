@@ -9,10 +9,18 @@ class Cards extends Component{
     constructor(){
         super();
         this.getMore = this.getMore.bind(this);
-        this.state = {offset:0, searchTerm:''}
+        this.state = {offset:0, searchTerm:'', sliceIndexStart:0, sliceIndexEnd:6}
         this.updateState = this.updateState.bind(this);
-
+        this.incrementSliceIndex = this.incrementSliceIndex.bind(this);
     }    
+
+    incrementSliceIndex(){
+        if(this.state.sliceIndexEnd<=30){
+            let indexStart = this.state.sliceIndexStart + 6;
+            let indexEnd = this.state.sliceIndexEnd + 6;
+            this.setState({sliceIndexStart:indexStart, sliceIndexEnd:indexEnd })
+        }
+    }
 
     updateState(){
         this.props.searchTerm !== this.state.searchTerm
@@ -36,25 +44,35 @@ class Cards extends Component{
         return(
             <div className="cards">
                 <h1>RECIPES</h1>
-                <div className='search-results'>           
-                {   recipes.results 
+                <div className='cards-container'>           
+                {   recipes.results //search by name
                     ?
                     (recipes.results.map(recipe=>{
                     return <SingleCard recipe={recipe} key={recipe.id} 
                     image={`https://spoonacular.com/recipeImages/${recipe.image}`}
                     />}))
                     :
-                    (recipes.map(recipe=>{
+                    (recipes.slice(this.state.sliceIndexStart,this.state.sliceIndexEnd).map(recipe=>{
                     return <SingleCard recipe={recipe} key={recipe.id}
                     image={recipe.image}
                     />}))
                 }
                 </div>
-                <button className="see-more"
-                    onClick={()=>this.getMore(this.props.searchTerm)}
-                    >See More
-                </button>
-                <button className="search-again">Search Again</button>
+                <div className="button-ctn">
+                {   recipes.results //search by name
+                    ?
+                    <button className="btn scew"
+                        onClick={()=>this.getMore(this.props.searchTerm)}
+                        >See More
+                    </button>
+                    :
+                    <button className="btn scew"
+                        onClick={()=>this.incrementSliceIndex()}
+                        >See More
+                    </button>
+                }                    
+                    <button onClick={()=>window.scrollBy(0,-1200)} className="btn scew">Search Again</button>
+                </div>
             </div>
         );
     }

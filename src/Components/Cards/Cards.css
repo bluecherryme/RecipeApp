@@ -1,10 +1,14 @@
 .cards{
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    padding-bottom: 150px;
     background-color:orange;
     background-image: url("./../../img/background3.jpeg");
     background-size: cover;
     color: white;
+    position:relative;
+    overflow: hidden;
+
 }
 
 .search-results{
@@ -14,4 +18,40 @@
 
 .cards>h1{
     margin-left: 20vw;
+    border-bottom: 2px solid white;
+}
+
+.cards-container{
+    max-width:1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: wrap;
+    align-content: space-between;
+    justify-content: center;
+    background-color: rgba(31,29,29,0.5);
+}
+
+.button-ctn{
+    height: 50px;
+    min-width: 400px;
+    width: 40vw;
+    border: 1px solid white;
+    position: absolute;
+    right: -10px;
+    bottom: 50px;
+    background-color: none;    
+}
+
+.button-ctn>.btn:hover{
+    color: #F96801;
+}
+
+.scew{
+    background: none;
+    color: white;
+    padding-left: 30px;
+    height: 100%;
+    font-size: 30px;
+    padding: 0 30px;
+    border: none;
 }
