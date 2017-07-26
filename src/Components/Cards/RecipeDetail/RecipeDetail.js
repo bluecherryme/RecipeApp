@@ -27,11 +27,15 @@ class RecipeDetail extends Component{
     
         return(
             <div className='recipe-detail'>
-                <div className="ingredients">
-                    <h2>{title}</h2>
-                    <img src={image} alt="Current Recipe"/>
-                    <h2>Ingredients</h2>
-                    <ul>
+                <h2>{title}</h2>
+                <div className="underlay picture">
+                    <div className="recipe-card"
+                        style={{"backgroundImage":`url(${image})`}}>
+                    </div>
+                </div>
+                <div>
+                    <h3 className='ingr'>Ingredients</h3>
+                    <ul className="ingredients">
                         {extendedIngredients.map((ingredient,index)=>
                             <li key={index}>
                                 {ingredient.originalString}
@@ -40,7 +44,7 @@ class RecipeDetail extends Component{
                     </ul>
                 </div>
                 <div className="instructions">
-                    <h2>Instructions</h2>
+                    <h3>Instructions</h3>
                     {
                         instructions
                         ?

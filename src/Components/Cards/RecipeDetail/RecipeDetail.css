@@ -1,4 +1,32 @@
 .recipe-detail{
     background-color: #88000F;
     color: white;
+    position: relative;
+}
+
+.picture{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+.ingredients{
+    width: 500px;
+    border-top: 1px solid white;
+    box-shadow: 4px 4px 15px 1px rgba(111, 56, 56, 0.5);
+    margin-left: 50px;
+    padding: 20px;
+}
+
+.recipe-detail>h2{
+    max-width: 59vw;
+    font-size: 25px;
+    border-bottom: 1px solid white;
+    margin-top: 0px;
+    margin-left: 100px;
+    padding-top: 80px;
+}
+
+.ingr{
+    margin: 60px auto -6px 50px;
 }

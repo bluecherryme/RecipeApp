@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Cards from './../Cards/Cards';
 import {connect} from 'react-redux';
 import Form from './Form';
-import Nav
 import {getRecipesByIngredients} from './../../redux/getSearchResults';
 import {getRecipesByName} from './../../redux/getSearchResults';
 import './search.css';
