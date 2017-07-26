@@ -5,6 +5,10 @@ import './SingleCard.css';
 
 
 class SingleCard extends Component{
+    getRecipeDetail(id){
+        this.props.getCurrentRecipe(id)
+        this.props.showRecipe();
+    }
 
     render(){
         var {id,title,usedIngredientCount,missedIngredientCount,likes,readyInMinutes} = this.props.recipe;
@@ -13,7 +17,7 @@ class SingleCard extends Component{
                 <div className="underlay">
                     <div className='recipe-card' key={id} 
                         style={{"backgroundImage":`url(${this.props.image})`}}>
-                        <div className="overlay-card" onClick={()=>this.props.getCurrentRecipe(id)}>
+                        <div className="overlay-card" onClick={()=>this.getRecipeDetail(id)}>
                             <h4>{title}</h4>
                             {
                                 usedIngredientCount

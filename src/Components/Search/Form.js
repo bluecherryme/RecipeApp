@@ -21,7 +21,7 @@ export default class Form extends Component{
         this.props.getRecipes(this.state.searchTerm,'GET_RECIPES',0);
         this.setState({searchTerm:''});
         this.props.getSearchTerm(this.state.searchTerm);
-        window.scrollBy(0,650);
+        window.scrollBy(0,550);
     
     }
 
@@ -42,7 +42,7 @@ export default class Form extends Component{
                 <button className="search-btn">
                     <img className='search-icon' src={require('./../../img/search.svg')} alt='search'/>
                 </button>
-        </form>
+            </form>
             
                             
         );

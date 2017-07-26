@@ -5,6 +5,27 @@ import saveIngredient from './func_saveToShoppingList';
 import './RecipeDetail.css'
 
 class RecipeDetail extends Component{
+    constructor(){
+        super();
+        this.state = {showSave: false, showAdd: false}
+    }
+
+    toggleSave(){
+        // eslint-disable-next-line
+        this.state.showSave = !this.state.showSave;
+        this.setState({showSave:this.state.showSave})
+    }
+
+    toggleAdd(){
+        // eslint-disable-next-line
+        this.state.showAdd = !this.state.showAdd;
+        this.setState({showAdd:this.state.showAdd})
+    }
+
+    saveAndToggle(a,b,c,d,e,f,g,h,i,j){
+        saveRecipe(a,b,c,d,e,f,g,h,i,j);
+        this.toggleSave();
+    }
 
     submitIngredient(extendedIngredients,clientid){
         if(clientid){
@@ -15,6 +36,7 @@ class RecipeDetail extends Component{
         } else {
             alert('Please login first');
         }
+        this.toggleAdd();
     }
 
     render(){
@@ -27,14 +49,17 @@ class RecipeDetail extends Component{
     
         return(
             <div className='recipe-detail'>
+            <img onClick={()=>this.props.hideRecipe()}
+                className='close' src={require('./../../../img/close.svg')} alt='search'
+            />
                 <h2>{title}</h2>
                 <div className="underlay picture">
                     <div className="recipe-card"
                         style={{"backgroundImage":`url(${image})`}}>
                     </div>
                 </div>
-                <div>
-                    <h3 className='ingr'>Ingredients</h3>
+                <div className="ingr-ctn">
+                    <h3 className='ingrH3'>Ingredients</h3>
                     <ul className="ingredients">
                         {extendedIngredients.map((ingredient,index)=>
                             <li key={index}>
@@ -44,31 +69,53 @@ class RecipeDetail extends Component{
                     </ul>
                 </div>
                 <div className="instructions">
-                    <h3>Instructions</h3>
+                <h3 className="insH3">Instructions</h3>
                     {
                         instructions
                         ?
                         <div className="instructionsContent">
                             <p>{instructions}</p>
-                            <p>likes: {aggregateLikes}</p>
-                            <p>servings: {servings}</p>
-                            <p>preperation time: {readyInMinutes} minutes</p>
+                            <p>likes: {aggregateLikes}
+                               {' '}servings: {servings}
+                               {' '}preperation time: {readyInMinutes} minutes</p>
                         </div>
                         :
                         <div>
                             <p>View full instructions </p>
-                            <button><a href={sourceUrl}>here</a></button>
+                            <button className='btn-here'><a href={sourceUrl}>here</a></button>
                         </div>
                     }
                 </div>
-                <div className="btn-container">
-                    <button className="save" 
-                    onClick={()=>saveRecipe(id,title,extendedIngredients,instructions,sourceUrl,aggregateLikes,image,servings,readyInMinutes,userid)}>
+                <div className="btn-recipe">
+                    <button className="save scew btn" 
+                    onClick={()=>this.saveAndToggle(id,title,extendedIngredients,instructions,sourceUrl,aggregateLikes,image,servings,readyInMinutes,userid)}>
                         save recipe</button>
-                    <button className="addToShoppingList"
+                    <button className="addToShoppingList scew btn"
                         onClick={()=>this.submitIngredient(extendedIngredients,userid)}
                         >add to shopping list
-                    </button>                    
+                    </button>  
+                    {   
+                    this.state.showSave
+                    ?  
+                    <div className="recipe-saved">
+                    Recipe has been saved to your account
+                    <img onClick={()=>this.toggleSave()}
+                    className='close-small' src={require('./../../../img/close.svg')} alt='search'/>                    
+                    </div> 
+                    :
+                    null
+                    }   
+                    {   
+                    this.state.showAdd
+                    ?  
+                    <div className="recipe-saved">
+                    Ingredients have been saved to your Shoppinglist.
+                    <img onClick={()=>this.toggleAdd()}
+                    className='close-small' src={require('./../../../img/close.svg')} alt='search'/>                    
+                    </div> 
+                    :
+                    null
+                    }         
                 </div>
             </div>
         );

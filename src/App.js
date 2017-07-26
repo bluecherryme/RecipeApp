@@ -4,7 +4,6 @@ import Home from './Components/Home/Home';
 import Search from './Components/Search/search';
 import More from './Components/More/More';
 import Footer from './Components/Footer/footer';
-import RecipeDetail from './Components/Cards/RecipeDetail/RecipeDetail';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +12,6 @@ class App extends Component {
       <div className="App">
         <Home/>
         <Search/>
-        <RecipeDetail/>
         <More/>
         {Footer()}
       </div>

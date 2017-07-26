@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SingleCard from './SingleCard/SingleCard';
+import RecipeDetail from './RecipeDetail/RecipeDetail';
 import {getRecipesByName} from './../../redux/getSearchResults';
 import './Cards.css';
 
@@ -9,10 +10,17 @@ class Cards extends Component{
     constructor(){
         super();
         this.getMore = this.getMore.bind(this);
-        this.state = {offset:0, searchTerm:'', sliceIndexStart:0, sliceIndexEnd:6}
+        this.state = {offset:0, searchTerm:'', sliceIndexStart:0, sliceIndexEnd:6, showRecipe: false}
         this.updateState = this.updateState.bind(this);
         this.incrementSliceIndex = this.incrementSliceIndex.bind(this);
+        this.toggleShowRecipe = this.toggleShowRecipe.bind(this);
     }    
+
+    toggleShowRecipe(){
+        // eslint-disable-next-line
+        this.state.showRecipe = !this.state.showRecipe;
+        this.setState({showRecipe:this.state.showRecipe});
+    }
 
     incrementSliceIndex(){
         if(this.state.sliceIndexEnd<=30){
@@ -48,12 +56,12 @@ class Cards extends Component{
                 {   recipes.results //search by name
                     ?
                     (recipes.results.map(recipe=>{
-                    return <SingleCard recipe={recipe} key={recipe.id} 
+                    return <SingleCard recipe={recipe} key={recipe.id} showRecipe={this.toggleShowRecipe}
                     image={`https://spoonacular.com/recipeImages/${recipe.image}`}
                     />}))
                     :
                     (recipes.slice(this.state.sliceIndexStart,this.state.sliceIndexEnd).map(recipe=>{
-                    return <SingleCard recipe={recipe} key={recipe.id}
+                    return <SingleCard recipe={recipe} key={recipe.id} showRecipe={this.toggleShowRecipe}
                     image={recipe.image}
                     />}))
                 }
@@ -71,8 +79,9 @@ class Cards extends Component{
                         >See More
                     </button>
                 }                    
-                    <button onClick={()=>window.scrollBy(0,-1200)} className="btn scew">Search Again</button>
+                    <button onClick={()=>window.scrollBy(0,-1000)} className="btn scew">Search Again</button>
                 </div>
+                {this.state.showRecipe ? <RecipeDetail hideRecipe={this.toggleShowRecipe}/> : null }
             </div>
         );
     }
