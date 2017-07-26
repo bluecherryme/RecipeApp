@@ -1,0 +1,20 @@
+.more{
+    margin-top: 0;
+    width: 100vw;
+    background-color: #CE5A5A;
+    color: white;
+}
+
+.icon-outer{
+    height:220px;
+    display:flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.icon-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto 120px;
+}

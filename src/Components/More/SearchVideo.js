@@ -44,12 +44,11 @@ export default class Video extends Component{
     render(){
         return(
             <div className="Video">
-                <h1>Video</h1>
                 <form onSubmit={(e)=>this.getVideo(e, this.state.searchTerm)}>
                     <input type="text" value={this.state.searchTerm} 
                         onChange={(e)=>this.onChange(e)}
                         placeholder="Search for Recipe Videos"/>
-                    <button className="search">Search</button>
+                    <button className="">Search</button>
                 </form>
                 <iframe src={`http://www.youtube.com/embed/${this.state.Video}`}
                     width="560" height="315" frameBorder="0" allowFullScreen>
