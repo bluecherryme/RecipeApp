@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-import API_Key from './../../API-Key';
-
+import {API_key_YT} from './../../API-Key'
+import YTSearch from 'youtube-api-search';
+import './SearchVideo.css';
 
 
 export default class Video extends Component{
@@ -19,39 +19,37 @@ export default class Video extends Component{
 
     setCurrentVideo(){
         var index = this.state.index;
-        this.setState({Video:this.state.VideoList[index].youTubeId});
-        console.log(this.state.Video);
-        if (index < 9){
+        this.setState({Video:this.state.VideoList[index].id.videoId});
+        if (index < 4){
             index++;
-            this.setState({index:index}); console.log('index',this.state.index);
+            this.setState({index:index}); 
         } else{ this.setState({index:0}) }
     }
-
+   
     getVideo(e,searchTerm){
-        e.preventDefault();
-        axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/videos/search?query=${searchTerm}&number=10`,
-            {
-            headers:{"X-Mashape-Key" : API_Key,
-                    "Accept" : "application/json"}
-            })
-            .then((payload)=>{
-                this.setState({VideoList:payload.data.videos});
-                this.setCurrentVideo();
-                })
-        
+    e.preventDefault();
+    YTSearch({key: API_key_YT, term:searchTerm}, (videos) =>{
+            this.setState({VideoList:videos});
+            this.setCurrentVideo();
+            this.setState({searchTerm:'', index:0})
+        });
     }
 
     render(){
         return(
-            <div className="Video">
+            <div className="video">
                 <form onSubmit={(e)=>this.getVideo(e, this.state.searchTerm)}>
+                    <img className='arrow-right' src={require('./../../img/arrow_right.svg')} alt='arrow-down'/>
                     <input type="text" value={this.state.searchTerm} 
                         onChange={(e)=>this.onChange(e)}
-                        placeholder="Search for Recipe Videos"/>
-                    <button className="">Search</button>
+                        placeholder="Search for Recipe Videos"
+                        className='video-search'/>
+                    <button className="search-btn">
+                        <img className='search-icon' src={require('./../../img/search.svg')} alt='search'/>
+                    </button>
                 </form>
                 <iframe src={`http://www.youtube.com/embed/${this.state.Video}`}
-                    width="560" height="315" frameBorder="0" allowFullScreen>
+                    title="video" width="560" height="315" frameBorder="0" allowFullScreen>
                 </iframe>
                 <button className="next" onClick={()=>this.setCurrentVideo()}>Next</button>
             </div>

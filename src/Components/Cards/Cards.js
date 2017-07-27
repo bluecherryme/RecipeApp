@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import SingleCard from './SingleCard/SingleCard';
 import RecipeDetail from './RecipeDetail/RecipeDetail';
 import {getRecipesByName} from './../../redux/getSearchResults';
+import {getRandomRecipe} from './../../redux/getRecipeById';
 import './Cards.css';
 
 
@@ -14,7 +15,14 @@ class Cards extends Component{
         this.updateState = this.updateState.bind(this);
         this.incrementSliceIndex = this.incrementSliceIndex.bind(this);
         this.toggleShowRecipe = this.toggleShowRecipe.bind(this);
+        this.getRandom = this.getRandom.bind(this);
     }    
+
+    getRandom(){
+        this.props.getRandomRecipe();
+        this.toggleShowRecipe();
+        window.scrollBy(0,-650);
+    }
 
     toggleShowRecipe(){
         // eslint-disable-next-line
@@ -80,6 +88,10 @@ class Cards extends Component{
                     </button>
                 }                    
                     <button onClick={()=>window.scrollBy(0,-1000)} className="btn scew">Search Again</button>
+                    <button className="btn scew"
+                      onClick={()=>this.getRandom()}
+                        >Random Recipe
+                    </button>
                 </div>
                 {this.state.showRecipe ? <RecipeDetail hideRecipe={this.toggleShowRecipe}/> : null }
             </div>
@@ -93,4 +105,4 @@ function mapStateToProps(state){
     );
 }
 
-export default connect(mapStateToProps,{getRecipesByName})(Cards);
+export default connect(mapStateToProps,{getRecipesByName,getRandomRecipe})(Cards);

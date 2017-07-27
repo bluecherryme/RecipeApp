@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Nav from './../../Components/Home/Navbar';
 import Footer from './../Footer/footer';
 import './About.css';
 
@@ -6,6 +7,7 @@ export default class About extends Component{
     render(){
         return(
             <div className="About">
+            <Nav/>
                 <h1>About</h1>
                 <h2>Technologies used to build this page:</h2>
                 <div className="icons">

@@ -16,7 +16,7 @@ class Navbar extends Component{
         <div className="nav">
           <div className="link-container">
             <Link className="link" to={'/'}>Home</Link>
-            <Link className="link" to={'/search'}>Search</Link>
+            <Link className="link" to={'/video'}>Video</Link>
             <Link className="link" to={'/about'}>About</Link>
             {
               this.props.currentUser.clientid

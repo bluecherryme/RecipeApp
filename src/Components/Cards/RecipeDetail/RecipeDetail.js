@@ -53,38 +53,38 @@ class RecipeDetail extends Component{
                 className='close' src={require('./../../../img/close.svg')} alt='search'
             />
                 <h2>{title}</h2>
-                <div className="underlay picture">
-                    <div className="recipe-card"
-                        style={{"backgroundImage":`url(${image})`}}>
+                <div className="recipe-card pic-small"
+                    style={{"backgroundImage":`url(${image})`}}>
+                </div>
+                <div className='recipe-content'>
+                    <div className="ingredients">
+                        <h3 className='ingrH3'>Ingredients</h3>
+                        <ul>
+                            {extendedIngredients.map((ingredient,index)=>
+                                <li key={index}>
+                                    {ingredient.originalString}
+                                </li>
+                            )}
+                        </ul>
                     </div>
-                </div>
-                <div className="ingr-ctn">
-                    <h3 className='ingrH3'>Ingredients</h3>
-                    <ul className="ingredients">
-                        {extendedIngredients.map((ingredient,index)=>
-                            <li key={index}>
-                                {ingredient.originalString}
-                            </li>
-                        )}
-                    </ul>
-                </div>
-                <div className="instructions">
-                <h3 className="insH3">Instructions</h3>
-                    {
-                        instructions
-                        ?
-                        <div className="instructionsContent">
-                            <p>{instructions}</p>
-                            <p>likes: {aggregateLikes}
-                               {' '}servings: {servings}
-                               {' '}preperation time: {readyInMinutes} minutes</p>
-                        </div>
-                        :
-                        <div>
-                            <p>View full instructions </p>
-                            <button className='btn-here'><a href={sourceUrl}>here</a></button>
-                        </div>
-                    }
+                    <div className="instructions">
+                    <h3 className="insH3">Instructions</h3>
+                        {
+                            instructions
+                            ?
+                            <div className="instructionsContent">
+                                <p>{instructions}</p>
+                                <p>likes: {aggregateLikes}
+                                {' '}servings: {servings}
+                                {' '}preperation time: {readyInMinutes} minutes</p>
+                            </div>
+                            :
+                            <div>
+                                <p>View full instructions </p>
+                                <button className='btn-here'><a href={sourceUrl}>here</a></button>
+                            </div>
+                        }
+                    </div>
                 </div>
                 <div className="btn-recipe">
                     <button className="save scew btn" 
