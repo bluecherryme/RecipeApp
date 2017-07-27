@@ -11,6 +11,17 @@ import './MyAccount.css';
 const userid = '103777885688777289032';
 
 class MyAccount extends Component{
+    constructor(){
+        super();
+        this.state = {show: true};
+        this.toggleShow = this.toggleShow.bind(this);
+    }
+
+    toggleShow(){
+        var toggle = !this.state.show;
+        this.setState({show:toggle})
+    }
+
     componentDidMount(){
         this.props.getRecipes(userid);
     }
@@ -20,8 +31,16 @@ class MyAccount extends Component{
         return(
             <div className='my-account'>
                 <Navbar/>
-                <Cards recipes={this.props.savedRecipes}/>
-                <MyShoppingList/>
+                <Cards recipes={this.props.savedRecipes}
+                    toggleShow={this.toggleShow}
+                />
+                {
+                this.state.show 
+                ?
+                <MyShoppingList toggleShow={this.toggleShow}/>
+                :
+                null
+                }
                 <RecipeDetail/>
                 <Footer/>
             </div>

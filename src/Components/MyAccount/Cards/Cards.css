@@ -1,3 +1,16 @@
-.search-results{
-    display: flex;
+.listH2{
+    position: absolute;
+    right: 5vw;
+    top: 120px;  
+    border: 2px solid #CE5A5A;
+    background-color: #CE5A5A;
+    color: white;
+    padding: 8px 15px;
+    font-style: bold;
+}
+
+.listH2:hover{
+    background-color: rgba(255,255,255,0.8);
+    color: #CE5A5A;
+    transform: scale(1.1,1.1);
 }

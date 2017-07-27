@@ -50,6 +50,8 @@ class MyShoppingList extends Component{
         var {clientid} = this.props.currentUser;
         return(
             <div className="list">
+                <img onClick={()=>this.props.toggleShow()}
+                 src={require('./../../img/close.svg')}/>            
                 <h2>My Shopping List</h2>
                 <ul>
                     {this.props.shoppingList.map((item,index)=>{
@@ -79,13 +81,15 @@ class MyShoppingList extends Component{
                         ADD 
                     </button>
                 </form>
-                <button className="clear"
-                    onClick={()=>this.props.clearAll()}>Clear All
-                </button>
-                <button className="save"
-                    onClick={()=>this.saveShoppingList(this.props.shoppingList,userid)}
-                    >Save
-                </button>
+                <div>
+                    <button className="clear"
+                        onClick={()=>this.props.clearAll()}>Clear All
+                    </button>
+                    <button className="save"
+                        onClick={()=>this.saveShoppingList(this.props.shoppingList,userid)}
+                        >Save
+                    </button>
+                </div>
             </div>
         );
     }

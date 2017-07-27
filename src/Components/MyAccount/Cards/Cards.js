@@ -12,6 +12,8 @@ export default class Cards extends Component{
         return(
             <div className="cards">
                 <h1>YOUR RECIPES</h1>
+                <h2 onClick={()=>this.props.toggleShow()}
+                    className='listH2'>My Shopping List</h2>
                 <div className='search-results cards-container'>           
                     {   recipes.map(recipe=>{
                         return <SingleCard recipe={recipe} key={recipe.id} 
