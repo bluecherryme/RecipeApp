@@ -13,7 +13,7 @@ class App extends Component {
         <Home/>
         <Search/>
         <Video/>
-        {Footer()}
+        <Footer/>
       </div>
     );
   }

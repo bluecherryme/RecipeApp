@@ -1,4 +1,32 @@
+.About{
+    text-align: center;
+}
+
+.About>h2{
+    text-decoration: underline;
+    padding: 20px;
+}
+
+
 img{
-    height: 120px;
+    height: 100px;
     width: auto;
+    margin: 5px;
+}
+
+.here{
+    color: red;
+}
+
+.here:hover{
+    transform: scale(1.1,1.1);
+    color: black;
+}
+
+.here-h2{
+    margin-bottom: 80px;
+}
+
+.here-h2 span{
+    color: red;
 }

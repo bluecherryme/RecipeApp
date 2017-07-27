@@ -20,7 +20,6 @@ class MyAccount extends Component{
         return(
             <div className='my-account'>
                 <Navbar/>
-                <h1>MyAccount</h1>
                 <Cards recipes={this.props.savedRecipes}/>
                 <MyShoppingList/>
                 <RecipeDetail/>

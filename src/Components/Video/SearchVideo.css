@@ -1,35 +1,16 @@
-.more{
-    margin-top: 0;
-    width: 100vw;
-    background-color: #CE5A5A;
-    color: white;
-}
-
-.icon-outer{
-    height:220px;
-    display:flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.line{
-    height: 1px;
-    width: 80vw;
-    margin: 0 auto;
-    border-bottom: 1px solid white;
-}
-
-.icon-ctn{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto 120px;
-}
-
 .video{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 0;
+    width: 100vw;
+    background-color: #CE5A5A;
+    color: white;
+    margin-bottom: -20px;
+}
+
+.video>h1{
+    margin-left: -300px;
 }
 
 .video-search{
@@ -37,6 +18,26 @@
 }
 
 .video>form{
-   margin-bottom: 40px;
+   margin-top: -20px;
+   margin-bottom: 100px;
+}
+
+.next{
+    margin-bottom: 80px;
+    margin-top: 20px;
+    background-color: #CE5A5A;
+    border: 2px solid white;
+    color: white;
+    font-family: inherit;
+    font-size: 25px;
+}
+
+.next:hover{
+    background-color: white;
+    color: #CE5A5A;
+}
+
+.next:focus{
+    outline: none;
 }
 

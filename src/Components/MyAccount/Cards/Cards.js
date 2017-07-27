@@ -11,8 +11,8 @@ export default class Cards extends Component{
 
         return(
             <div className="cards">
-                <h1>Cards</h1>
-                <div className='search-results'>           
+                <h1>YOUR RECIPES</h1>
+                <div className='search-results cards-container'>           
                     {   recipes.map(recipe=>{
                         return <SingleCard recipe={recipe} key={recipe.id} 
                         image={recipe.image}

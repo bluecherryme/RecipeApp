@@ -1,0 +1,46 @@
+.list{
+    background-color: #CE5A5A;
+    color: white;
+    width: 40vw;
+    padding: 40px 50px;
+    text-align: left;
+}
+
+.list>h2{
+    border-bottom: 1px solid white;
+    margin-bottom: 30px;
+}
+
+.list>ul>li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete{
+    height: 20px;
+    width: 20px;
+    background-color: #88000F;
+    border: 1px solid white;
+    margin: 5px;
+    position:relative;
+}
+
+.delete:focus{
+    outline: none;
+}
+
+.delete:hover{
+    transform: scale(1.1,1.1);
+}
+
+.delete img{
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    top: -7px;
+    left: -7px;
+}
+
+.add-item{
+    background-color: #CE5A5A;
+}

@@ -61,4 +61,5 @@ a{
 .btn-log:hover{
   color: #F96801;
   border-color: #F96801;
+  transform: scale(1.1,1.1);
 }

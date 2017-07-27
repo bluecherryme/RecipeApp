@@ -6,6 +6,7 @@ import {deleteItem} from './../../redux/updateShoppingList';
 import {addItem} from './../../redux/updateShoppingList';
 import {clearAll} from './../../redux/updateShoppingList';
 import saveIngredient from './../Cards/RecipeDetail/func_saveToShoppingList';
+import './MyShoppingList.css';
 
 const userid = '103777885688777289032';
 
@@ -48,15 +49,17 @@ class MyShoppingList extends Component{
     render(){
         var {clientid} = this.props.currentUser;
         return(
-            <div className="MyShoppingList">
-                <h1>MyShoppinglist</h1>
+            <div className="list">
+                <h2>My Shopping List</h2>
                 <ul>
                     {this.props.shoppingList.map((item,index)=>{
                         return <li key={index}>
                         {item.item}
                         <button
                           onClick={()=>this.props.deleteItem(item.item)}
-                             className="delete">Delete</button>
+                             className="delete">
+                             <img src={require('./../../img/close.svg')}/>
+                             </button>
                         </li>
                     })}
                 </ul>
@@ -67,7 +70,7 @@ class MyShoppingList extends Component{
                     
                     <input 
                     type="text" 
-                    className="search-field"
+                    className="search-field add-item"
                     placeholder='add another item'
                     value={ this.state.value }   
                     onChange= {(e)=>this.handleChange(e.target.value) }             
