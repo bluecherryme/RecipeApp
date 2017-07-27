@@ -7,6 +7,7 @@
     position: absolute;
     top: 100px;
     left: 300px;
+    overflow: hidden;
 }
 
 .list>img{
@@ -16,6 +17,10 @@
     top: 10px;
     right: 10px;
     border: 1px solid white;
+}
+
+.add:hover{
+    transform: scale(1.1,1.1);
 }
 
 .list>img:hover{
@@ -60,4 +65,26 @@
 .add-item{
     background-color: #CE5A5A;
     margin-top: 0;
+}
+
+.btn-list{
+    display: block;
+    margin: 40px -100px auto 190px;
+    font-weight: bold;
+    border: 2px solid white;
+    height: 40px;
+    border-right: none;
+}
+
+.btn-ls{
+    font-family: 'Poiret One', cursive;
+}
+
+.btn-list>.btn-ls:hover{
+    background-color: white;
+    color: #CE5A5A;
+}
+
+.btn-list>.btn-ls:focus{
+    outline: none;
 }

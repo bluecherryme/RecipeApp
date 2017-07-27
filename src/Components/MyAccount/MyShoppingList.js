@@ -24,6 +24,7 @@ class MyShoppingList extends Component{
             //eslint-disable-next-line
         shoppingList.map(ingredient=>{
             saveIngredient(ingredient.item,clientid);
+            this.props.toggleShow();
         })
     }
 
@@ -77,15 +78,15 @@ class MyShoppingList extends Component{
                     value={ this.state.value }   
                     onChange= {(e)=>this.handleChange(e.target.value) }             
                     />
-                    <button className="search-btn btn btn-primary">
+                    <button className="search-btn btn add">
                         ADD 
                     </button>
                 </form>
-                <div>
-                    <button className="clear"
+                <div className='btn-list'>
+                    <button className="scew btn-ls"
                         onClick={()=>this.props.clearAll()}>Clear All
                     </button>
-                    <button className="save"
+                    <button className="scew btn-ls"
                         onClick={()=>this.saveShoppingList(this.props.shoppingList,userid)}
                         >Save
                     </button>
