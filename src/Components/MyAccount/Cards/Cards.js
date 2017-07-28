@@ -7,7 +7,6 @@ export default class Cards extends Component{
     
     render(){
         var recipes = this.props.recipes || [];
-        console.log(this.props.recipes);
 
         return(
             <div className="cards">
@@ -17,7 +16,7 @@ export default class Cards extends Component{
                 <div className='search-results cards-container'>           
                     {   recipes.map(recipe=>{
                         return <SingleCard recipe={recipe} key={recipe.id} 
-                        image={recipe.image}
+                        image={recipe.image} showRecipe={()=>this.props.showRecipe()}
                         />})    
                     }
                 </div>

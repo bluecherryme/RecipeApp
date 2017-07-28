@@ -26,7 +26,8 @@ export default class Video extends Component{
         } else{ this.setState({index:0}) }
     }
    
-    getVideo(searchTerm){
+    getVideo(e, searchTerm){
+    e ? e.preventDefault() : null;
     YTSearch({key: API_key_YT, term:searchTerm}, (videos) =>{
             this.setState({VideoList:videos});
             this.setCurrentVideo();
@@ -35,7 +36,7 @@ export default class Video extends Component{
     }
 
     componentDidMount() {
-        this.getVideo('almazan kitchen');
+        this.getVideo(null,'almazan kitchen');
     }
     
 
@@ -43,7 +44,7 @@ export default class Video extends Component{
         return(
             <div className="video">
             <h1>Video Search</h1>
-                <form onSubmit={()=>this.getVideo(this.state.searchTerm)}>
+                <form onSubmit={(e)=>this.getVideo(e, this.state.searchTerm)}>
                     <img className='arrow-right' src={require('./../../img/arrow_right.svg')} alt='arrow-down'/>
                     <input type="text" value={this.state.searchTerm} 
                         onChange={(e)=>this.onChange(e)}

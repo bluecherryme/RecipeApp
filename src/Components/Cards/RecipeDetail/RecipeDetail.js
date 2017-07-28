@@ -11,15 +11,13 @@ class RecipeDetail extends Component{
     }
 
     toggleSave(){
-        // eslint-disable-next-line
-        this.state.showSave = !this.state.showSave;
-        this.setState({showSave:this.state.showSave})
+        let toggle = !this.state.showSave;
+        this.setState({showSave:toggle})
     }
 
     toggleAdd(){
-        // eslint-disable-next-line
-        this.state.showAdd = !this.state.showAdd;
-        this.setState({showAdd:this.state.showAdd})
+        let toggle = !this.state.showAdd;
+        this.setState({showAdd:toggle})
     }
 
     saveAndToggle(a,b,c,d,e,f,g,h,i,j){
@@ -49,9 +47,9 @@ class RecipeDetail extends Component{
     
         return(
             <div className='recipe-detail'>
-            <img onClick={()=>this.props.hideRecipe()}
-                className='close' src={require('./../../../img/close.svg')} alt='search'
-            />
+                <img onClick={()=>this.props.hideRecipe()}
+                    className='close' src={require('./../../../img/close.svg')} alt='search'
+                />
                 <h2>{title}</h2>
                 <div className="recipe-card pic-small"
                     style={{"backgroundImage":`url(${image})`}}>

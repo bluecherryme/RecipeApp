@@ -1,0 +1,10 @@
+.btn-detail{
+    text-align: right;
+    max-width: 400px;
+    border-left: none !important;
+    margin-left: 0 !important; 
+}
+
+.ingredients li{
+    list-style: none;
+}

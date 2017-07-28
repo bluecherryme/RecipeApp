@@ -26,8 +26,8 @@ module.exports={
 
     deleteRecipe:(req,res,next)=>{
         const dbInstance = req.app.get('db');
-        const {recipeid} = req.query;
-        dbInstance.delet_recipe([recipeid])
+        const {clientid, recipeid} = req.query;
+        dbInstance.delete_recipe([clientid,recipeid])
         .then(()=>res.status(200).send('Recipe has been deleted'))
         .catch((err)=>res.status(500).send(err))
     }

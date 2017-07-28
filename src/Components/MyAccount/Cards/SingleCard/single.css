@@ -7,4 +7,5 @@
     background-color: transparent !important;
     top: -18px;
     right: -117px;
+    z-index: 1;
 }

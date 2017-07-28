@@ -1,1 +1,1 @@
-delete from savedrecipes where recipeid = $1;
+delete from savedrecipes where clientid = $1 and recipeid = $2;

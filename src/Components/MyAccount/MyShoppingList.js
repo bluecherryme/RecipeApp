@@ -23,10 +23,14 @@ class MyShoppingList extends Component{
     saveShoppingList(shoppingList,clientid){
         axios.delete(`/api/delete?userid=${clientid}`).then().catch();
             //eslint-disable-next-line
+        shoppingList[0]
+        ?
         shoppingList.map(ingredient=>{
             saveIngredient(ingredient.item,clientid);
             this.props.toggleShow();
         })
+        :
+        this.props.toggleShow();
     }
 
     handleChange(value){

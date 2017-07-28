@@ -23,7 +23,7 @@ export default class About extends Component{
                     <img src={require('./../../img/git.png')} alt='Git'/>
                     <img src={require('./../../img/github.png')} alt='Github'/>
                 </div>
-                <h2 className='here-h2'>Have a look at the <span>code</span>  that runs this page <br/>
+                <h2 className='here-h2'>Have a look at the <span>CODE</span>  that runs this page <br/>
                     <a className='here'
                      href='https://github.com/bluecherryme/RecipeApp'>HERE</a>
                 </h2>
