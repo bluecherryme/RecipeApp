@@ -17,6 +17,7 @@ class MyShoppingList extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.saveShoppingList = this.saveShoppingList.bind(this); 
+        this.clearList = this.clearList.bind(this);
     }
 
     saveShoppingList(shoppingList,clientid){
@@ -45,6 +46,16 @@ class MyShoppingList extends Component{
             })
         }
         this.setState({value:''});
+    }
+
+    clearList(clientid){
+        axios.delete(`/api/delete?userid=${clientid}`).then().catch();        
+        //action to reducer
+        this.props.clearAll();
+        //scroll up
+        window.scroll(0,-500);
+        //save and close
+        this.props.toggleShow();
     }
 
     render(){
@@ -84,7 +95,7 @@ class MyShoppingList extends Component{
                 </form>
                 <div className='btn-list'>
                     <button className="scew btn-ls"
-                        onClick={()=>this.props.clearAll()}>Clear All
+                        onClick={()=>this.clearList(userid)}>Clear All
                     </button>
                     <button className="scew btn-ls"
                         onClick={()=>this.saveShoppingList(this.props.shoppingList,userid)}

@@ -22,7 +22,7 @@ module.exports={
         const dbInstance = req.app.get('db');
         const {userid} = req.query;
 
-        dbInstance.delete_shoppinglist(userid)
+        dbInstance.delete_shoppinglist([userid])
         .then(()=>res.status(200).send('shoppingList has been deleted'))
         .catch((err)=>res.status(500).send(err))
     }

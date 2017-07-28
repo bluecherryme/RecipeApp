@@ -18,9 +18,18 @@ module.exports={
     getSavedRecipes:(req,res,next)=>{
         const dbInstance = req.app.get('db');
         const {userid} = req.query;
+        
         dbInstance.get_saved_recipes([userid])
         .then((recipes)=>res.status(200).send(recipes))
         .catch((err)=>res.status(500).send(err));
+    },
+
+    deleteRecipe:(req,res,next)=>{
+        const dbInstance = req.app.get('db');
+        const {recipeid} = req.query;
+        dbInstance.delet_recipe([recipeid])
+        .then(()=>res.status(200).send('Recipe has been deleted'))
+        .catch((err)=>res.status(500).send(err))
     }
 }
 

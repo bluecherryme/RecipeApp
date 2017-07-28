@@ -1,0 +1,10 @@
+.rel{
+    position: relative;
+}
+
+.del{
+    position: absolute;
+    background-color: transparent !important;
+    top: -18px;
+    right: -117px;
+}

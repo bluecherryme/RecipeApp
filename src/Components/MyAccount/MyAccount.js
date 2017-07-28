@@ -13,7 +13,7 @@ const userid = '103777885688777289032';
 class MyAccount extends Component{
     constructor(){
         super();
-        this.state = {show: true};
+        this.state = {show: false};
         this.toggleShow = this.toggleShow.bind(this);
     }
 

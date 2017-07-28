@@ -102,6 +102,9 @@ app.post('/api/saveRecipe', recipeController.saveRecipe);
 //GET SAVED RECIPES
 app.get('/api/recipes', recipeController.getSavedRecipes);
 
+//DELETE RECIPE
+app.delete('./api/deleteRecipe', recipeController.deleteRecipe);
+
 //SAVE INGREDIENTS
 const shoppingListController = require('./controllers/shoppinglist_Controller');
 app.post('/api/saveIngredient', shoppingListController.saveIngredient);

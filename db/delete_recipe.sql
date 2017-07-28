@@ -1,0 +1,1 @@
+delete from savedrecipes where recipeid = $1;
