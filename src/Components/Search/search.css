@@ -12,10 +12,14 @@
     height: 50px;
     margin-right: 35px;
     border: 2px solid white;
-    /* border-radius: 30px; */
     color: white;
     font-size: 20px;
     font-weight: bold;
+}
+
+.btn-large:hover{
+    transform: scale(1.05,1.05);
+    transition:all 0.5s ease;
 }
 
 .search-field{
@@ -27,6 +31,7 @@
     height:45px;
     width: auto;
 }
+
 
 form{
     margin-top: 60px;
@@ -44,6 +49,11 @@ form{
     margin-left: 20px;
     background: none;
     border: 2px solid white;
+}
+
+.search-btn:hover{
+    transform: scale(1.05,1.05);
+    transition:all 0.5s ease;
 }
 
 input{
