@@ -10,6 +10,7 @@ export function getRecipes(clientID){
             type: GET_SAVED_RECIPES,
             payload: axios.get(`/api/recipes?userid=${clientID}`)
                     .then(payload=>{
+                        console.log(payload);
                         return payload;
                     })
         }

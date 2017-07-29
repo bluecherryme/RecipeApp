@@ -30,6 +30,8 @@ class MyAccount extends Component{
 
     componentDidMount(){
         this.props.getRecipes(userid);
+        console.log('recipes', this.props.savedRecipes)
+        console.log('user',this.props.currentUser)
     }
 
     render(){

@@ -1,0 +1,1 @@
+select * from savedrecipes where clientid = $1 and recipeid = $2;
