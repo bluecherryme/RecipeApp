@@ -30,11 +30,11 @@ class MyAccount extends Component{
 
     componentDidMount(){
         this.props.getRecipes(userid);
-        console.log('recipes', this.props.savedRecipes)
         console.log('user',this.props.currentUser)
     }
 
     render(){
+        console.log('recipes', this.props.savedRecipes)
         var {clientid} = this.props.currentUser;
         return(
             <div className='my-account'>
