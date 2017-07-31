@@ -21,13 +21,13 @@ class SingleCard extends Component{
     }
 
     render(){
-        const userid = '103777885688777289032';
+        //const userid = '103777885688777289032';
         var {id,title,readyinminutes} = this.props.recipe;
         var clientid = this.props.clientid;
         return(
             <div>
                 <button
-                    onClick={()=>this.deleteRecipe(userid, id)}
+                    onClick={()=>this.deleteRecipe(clientid, id)}
                         className="delete del">
                         <img src={require('./../../../../img/close.svg')}/>
                 </button>

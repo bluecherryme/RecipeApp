@@ -8,7 +8,7 @@ import Navbar from './../../Components/Home/Navbar';
 import Footer from './../../Components/Footer/footer';
 import './MyAccount.css';
 
-const userid = '103777885688777289032';
+//const userid = '103777885688777289032';
 
 class MyAccount extends Component{
     constructor(){
@@ -29,13 +29,12 @@ class MyAccount extends Component{
     }
 
     componentDidMount(){
-        this.props.getRecipes(userid);
-        console.log('user',this.props.currentUser)
+        this.props.getRecipes(this.props.currentUser.clientid);
     }
 
     render(){
-        console.log('recipes', this.props.savedRecipes)
         var {clientid} = this.props.currentUser;
+        console.log(clientid)
         return(
             <div className='my-account'>
                 <Navbar/>
