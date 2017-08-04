@@ -7,17 +7,30 @@ import './RecipeDetail.css'
 class RecipeDetail extends Component{
     constructor(){
         super();
-        this.state = {showSave: false, showAdd: false}
+        this.state = {showSave: false, showAdd: false};
+        this.save = this.save.bind(this);
+        this.add = this.add.bind(this);
+
     }
 
-    toggleSave(){
+    save(){
         let toggle = !this.state.showSave;
         this.setState({showSave:toggle})
     }
 
-    toggleAdd(){
+    toggleSave(){
+        this.save();
+        setTimeout(this.save,2000);
+    }
+
+    add(){
         let toggle = !this.state.showAdd;
         this.setState({showAdd:toggle})
+    }
+
+    toggleAdd(){
+        this.add();
+        setTimeout(this.add,2000);
     }
 
     saveAndToggle(a,b,c,d,e,f,g,h,i,j){

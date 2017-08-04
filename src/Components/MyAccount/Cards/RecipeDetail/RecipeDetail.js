@@ -6,12 +6,18 @@ import './detail.css';
 class RecipeDetail extends Component{
     constructor(){
         super();
-        this.state = {showAdd: false}
+        this.state = {showAdd: false};
+        this.add = this.add.bind(this);
+    }
+
+    add(){
+        let toggle = !this.state.showAdd;
+        this.setState({showAdd:toggle})
     }
 
     toggleAdd(){
-        let toggle = !this.state.showAdd;
-        this.setState({showAdd:toggle})
+        this.add();
+        setTimeout(this.add,2000);
     }
 
     submitIngredient(extendedIngredients,clientid){
