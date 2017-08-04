@@ -51,19 +51,19 @@ class RecipeDetail extends Component{
                     className='close' src={require('./../../../img/close.svg')} alt='search'
                 />
                 <h2>{title}</h2>
-                <div className="recipe-card pic-small"
-                    style={{"backgroundImage":`url(${image})`}}>
-                </div>
                 <div className='recipe-content'>
                     <div className="ingredients">
-                        <h3 className='ingrH3'>Ingredients</h3>
-                        <ul>
-                            {extendedIngredients.map((ingredient,index)=>
-                                <li key={index}>
-                                    {ingredient.originalString}
-                                </li>
-                            )}
-                        </ul>
+                        <div>
+                            <img src={image} alt="Current Recipe"/>
+                            <h2>Ingredients</h2>
+                            <ul>
+                                {extendedIngredients.map((ingredient,index)=>
+                                    <li key={index}>
+                                        {ingredient.originalString}
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
                     </div>
                     <div className="instructions">
                     <h3 className="insH3">Instructions</h3>
