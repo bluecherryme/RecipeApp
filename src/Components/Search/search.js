@@ -45,41 +45,45 @@ class Search extends Component{
         return(
             <div className="search-results" id='search'>
                 <div className="search">
-                    <h1>SEARCH</h1>
-                    <button className='btn btn-large' onClick={this.toggleByName}
-                    style={
-                        this.state.byName 
-                        ? 
-                        {'color':'#F96801',
-                        'backgroundColor': 'white'} 
-                        : 
-                        {'color':'white',
-                        'backgroundColor':'#F96801'}}>
-                        by name</button>
-                    <button className='btn btn-large' onClick={this.toggleByIngredients}
-                    style={
-                        !this.state.byName 
-                        ? 
-                        {'color':'#F96801',
-                        'backgroundColor': 'white'
-                        } 
-                        : 
-                        {'color':'white',
-                        'backgroundColor':'#F96801'}}>
-                    
-                   by ingredients</button>
-                    {
-                        this.state.byName
-                        ?
-                        <Form getRecipes={this.props.getRecipesByName} 
-                            placeholder={"e.g. potato salad"}
-                            getSearchTerm={this.getSearchTerm}/>
-                        :
-                        <Form getRecipes={this.props.getRecipesByIngredients} 
-                            getSearchTerm={this.getSearchTerm}
-                            placeholder="e.g. potatoes, bacon, broccoli..."/>
-                    }
-                    
+                    <div className='search-item-ctn'>
+                        <h1 className="searchA">SEARCH</h1>
+                        <div className='btn-ctn'>
+                            <button className='btn btn-large' onClick={this.toggleByName}
+                            style={
+                                this.state.byName 
+                                ? 
+                                {'color':'#F96801',
+                                'backgroundColor': 'white'} 
+                                : 
+                                {'color':'white',
+                                'backgroundColor':'#F96801'}}>
+                                by name</button>
+                            <button className='btn btn-large' onClick={this.toggleByIngredients}
+                            style={
+                                !this.state.byName 
+                                ? 
+                                {'color':'#F96801',
+                                'backgroundColor': 'white'
+                                } 
+                                : 
+                                {'color':'white',
+                                'backgroundColor':'#F96801'}}>
+                            
+                                by ingredients</button>
+                        </div>
+                        {
+                            this.state.byName
+                            ?
+                            <Form getRecipes={this.props.getRecipesByName} 
+                                placeholder={"e.g. potato salad"}
+                                getSearchTerm={this.getSearchTerm}/>
+                            :
+                            <Form getRecipes={this.props.getRecipesByIngredients} 
+                                getSearchTerm={this.getSearchTerm}
+                                placeholder="e.g. potatoes, bacon, broccoli..."/>
+                        }
+                        
+                    </div>
                 </div>
                 <Cards searchTerm={this.state.searchTerm||''}/>
 

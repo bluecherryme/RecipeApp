@@ -12,7 +12,7 @@ export default class Home extends Component{
                 <div className="heading">
                     <div className="heading2">
                         <h4>Let's</h4>
-                        <h1>COOK</h1>
+                        <h1 className="cookH1">COOK</h1>
                         <p>The best recipes from all over the world</p>
                     </div>
                 </div>
