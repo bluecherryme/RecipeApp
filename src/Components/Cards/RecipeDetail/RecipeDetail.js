@@ -7,32 +7,36 @@ import './RecipeDetail.css'
 class RecipeDetail extends Component{
     constructor(){
         super();
-        this.state = {showSave: false, showAdd: false};
-        this.save = this.save.bind(this);
-        this.add = this.add.bind(this);
 
+        this.state = {showSave: false, showAdd: false}
+        this.showAdd = this.showAdd.bind(this);
+        this.toggleAdd = this.toggleAdd.bind(this);
+        this.showSave = this.showSave.bind(this);
+        this.toggleSave = this.toggleSave.bind(this);
     }
 
-    save(){
+    showSave(){
         let toggle = !this.state.showSave;
-        this.setState({showSave:toggle})
+        this.setState({showSave:toggle});
+        // setTimeout(this.toggleSave(),1000);
     }
 
     toggleSave(){
-        this.save();
-        setTimeout(this.save,2000);
+        this.showSave();
+        setTimeout(this.showSave,1000);
     }
 
-    add(){
+    showAdd(){
         let toggle = !this.state.showAdd;
         this.setState({showAdd:toggle})
+        console.log('hello');
     }
 
     toggleAdd(){
-        this.add();
-        setTimeout(this.add,2000);
+        this.showAdd();
+        setTimeout(this.showAdd,1000);
     }
-
+  
     saveAndToggle(a,b,c,d,e,f,g,h,i,j){
         saveRecipe(a,b,c,d,e,f,g,h,i,j);
         this.toggleSave();
@@ -52,7 +56,7 @@ class RecipeDetail extends Component{
 
     render(){
 
-    const userid = '103777885688777289032';
+    //const userid = '103777885688777289032';
     var extendedIngredients = this.props.recipe.currentRecipe.extendedIngredients || [];
     var {id, instructions, sourceUrl, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
@@ -99,14 +103,14 @@ class RecipeDetail extends Component{
                 </div>
                 <div className="btn-recipe">
                     <button className="save scew btn" 
-                    onClick={()=>this.saveAndToggle(id,title,extendedIngredients,instructions,sourceUrl,aggregateLikes,image,servings,readyInMinutes,userid)}>
+                    onClick={()=>this.saveAndToggle(id,title,extendedIngredients,instructions,sourceUrl,aggregateLikes,image,servings,readyInMinutes,clientid)}>
                         save recipe</button>
                     <button className="addToShoppingList scew btn"
-                        onClick={()=>this.submitIngredient(extendedIngredients,userid)}
+                        onClick={()=>this.submitIngredient(extendedIngredients,clientid)}
                         >add to shopping list
                     </button>  
                     {   
-                    this.state.showSave
+                    (this.state.showSave && clientid)
                     ?  
                     <div className="recipe-saved">
                     Recipe has been saved to your account
@@ -117,7 +121,7 @@ class RecipeDetail extends Component{
                     null
                     }   
                     {   
-                    this.state.showAdd
+                    (this.state.showAdd && clientid)
                     ?  
                     <div className="recipe-saved">
                     Ingredients have been saved to your Shoppinglist.

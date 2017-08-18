@@ -8,7 +8,7 @@ import {clearAll} from './../../redux/updateShoppingList';
 import saveIngredient from './../Cards/RecipeDetail/func_saveToShoppingList';
 import './MyShoppingList.css';
 
-const userid = '103777885688777289032';
+// const userid = '103777885688777289032';
 
 class MyShoppingList extends Component{
     constructor(){
@@ -38,14 +38,14 @@ class MyShoppingList extends Component{
     }
 
     componentDidMount(){
-        this.props.getShoppingList(userid);
+        this.props.getShoppingList(this.props.currentUser.clientid);
     }
 
     handleSubmit(e,item){
         e.preventDefault();
         if(this.state.value){
             this.props.addItem({
-                clientid:userid,
+                clientid:this.clientid,
                 item:item
             })
         }
@@ -99,10 +99,10 @@ class MyShoppingList extends Component{
                 </form>
                 <div className='btn-list'>
                     <button className="scew btn-ls"
-                        onClick={()=>this.clearList(userid)}>Clear All
+                        onClick={()=>this.clearList(clientid)}>Clear All
                     </button>
                     <button className="scew btn-ls"
-                        onClick={()=>this.saveShoppingList(this.props.shoppingList,userid)}
+                        onClick={()=>this.saveShoppingList(this.props.shoppingList,clientid)}
                         >Save
                     </button>
                 </div>

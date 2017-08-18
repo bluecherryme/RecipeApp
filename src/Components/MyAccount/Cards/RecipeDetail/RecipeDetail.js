@@ -30,7 +30,7 @@ class RecipeDetail extends Component{
 
     render(){
 
-    const userid = '103777885688777289032';
+    // const userid = '103777885688777289032';
     var extendedIngredients = this.props.recipe.currentRecipe.extendedIngredients || [];
     var {id, instructions, sourceUrl, aggregateLikes, image, servings} = this.props.recipe.currentRecipe;
     var {title, readyInMinutes} = this.props.recipe.currentRecipe;
@@ -78,7 +78,7 @@ class RecipeDetail extends Component{
                 </div>
                 <div className="btn-recipe btn-detail">
                     <button className="addToShoppingList scew btn"
-                        onClick={()=>this.submitIngredient(extendedIngredients,userid)}
+                        onClick={()=>this.submitIngredient(extendedIngredients,clientid)}
                         >add to shopping list
                     </button>    
                     {   
