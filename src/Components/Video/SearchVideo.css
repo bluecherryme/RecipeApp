@@ -40,3 +40,14 @@
     outline: none;
 }
 
+@media (max-width: 520px){
+    h1{
+      font-size: 50px;
+    }
+  
+
+  .video>h1{
+    margin: 60px 0;
+    }
+
+}

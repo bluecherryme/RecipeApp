@@ -41,7 +41,7 @@ class MyAccount extends Component{
                 <Cards recipes={this.props.savedRecipes}
                     showRecipe={this.toggleShowRecipe}
                     toggleShow={this.toggleShow}
-                    clientid={userid}
+                    clientid={clientid}
                 />
                 {
                 this.state.show 

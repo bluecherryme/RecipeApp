@@ -3,6 +3,7 @@ import {API_key_YT} from './../../API-Key'
 import YTSearch from 'youtube-api-search';
 import './SearchVideo.css';
 
+const screenWidth = window.innerWidth;
 
 export default class Video extends Component{
     constructor(){
@@ -41,6 +42,7 @@ export default class Video extends Component{
     
 
     render(){
+        console.log(screenWidth)
         return(
             <div className="video">
             <h1>Video Search</h1>
@@ -54,9 +56,11 @@ export default class Video extends Component{
                         <img className='search-icon' src={require('./../../img/search.svg')} alt='search'/>
                     </button>
                 </form>
-                <iframe src={`http://www.youtube.com/embed/${this.state.Video}`}
-                    title="video" width="560" height="315" frameBorder="0" allowFullScreen>
-                </iframe>
+                <div class="video-container">       
+                    <iframe src={`http://www.youtube.com/embed/${this.state.Video}`}
+                        title="video" width={screenWidth<560?375:560} height={screenWidth<560?210.9375:315} frameBorder="0" allowFullScreen>
+                    </iframe>
+                </div>      
                 <button className="next" onClick={()=>this.setCurrentVideo()}>Next</button>
             </div>
         );
