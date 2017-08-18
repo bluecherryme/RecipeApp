@@ -6,7 +6,7 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const config = require('./config.js');
 const cors = require('cors');
-const connectionString = "postgres://rhvhjsmnvwxxmr:a8c5871cff63bfa3b67f80060cebda682c5c7242e41095158b499fd0b64e9bae@ec2-54-163-254-143.compute-1.amazonaws.com:5432/d1t2gbql3b3rof?ssl=true";
+const connectionString = config.connectionString;
 const app = module.exports = express();  
 
 massive(connectionString).then(dbInstance=>{

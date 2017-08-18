@@ -6,9 +6,10 @@
     background-color: #88000F; 
     color: white;
     position: absolute;
-    top: 50px;;
+    top: 50px;
     left: 10vw;
     font-size: 16px;
+    z-index:2;
 }
 
 .close{
@@ -117,4 +118,15 @@
 
 .btn-here>a:hover{
     color: white;
+}
+
+.btn-detail{
+    text-align: right;
+    max-width: 400px;
+    border-left: none !important;
+    margin-left: 0 !important; 
+}
+
+.ingredients li{
+    list-style: none;
 }

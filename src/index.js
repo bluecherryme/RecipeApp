@@ -6,7 +6,7 @@ import store from './redux/store';
 import './index.css';
 import App from './App';
 import MyAccount from './Components/MyAccount/MyAccount';
-import Video from './Components/Video/SearchVideo';
+import VideoTab from './Components/Video/Video-Tab';
 import About from './Components/About/About';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,7 +15,7 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route exact path='/' component={App}/>
-                <Route path='/video' component={Video}/>
+                <Route path='/video' component={VideoTab}/>
                 <Route path='/myaccount' component={MyAccount}/>
                 <Route path='/about' component={About}/>
             </Switch>

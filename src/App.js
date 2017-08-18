@@ -4,7 +4,6 @@ import Home from './Components/Home/Home';
 import Search from './Components/Search/search';
 import Video from './Components/Video/SearchVideo';
 import Footer from './Components/Footer/footer';
-import './App.css';
 
 class App extends Component {
   render() {

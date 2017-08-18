@@ -1,5 +1,4 @@
 .home{
-    width: 99vw;
     height: 100vh;
     background-image: url('./../../img/background1.jpeg');
     background-color: orange;
@@ -15,8 +14,6 @@ a{
 }
 
 .overlay{
-    width: 100vw;
-    height: 90vh;
     background-color: rgba(31,29,29,0.5); 
     position: absolute;
     top: 0;
@@ -62,4 +59,14 @@ a{
   color: #F96801;
   border-color: #F96801;
   transform: scale(1.1,1.1);
+}
+
+@media (max-width: 520px){
+    .cookH1{
+        font-size: 100px;
+    }
+
+    .heading2{
+        width: 100vw;
+    }
 }
