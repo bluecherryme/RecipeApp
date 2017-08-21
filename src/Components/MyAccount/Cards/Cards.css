@@ -14,3 +14,13 @@
     color: #CE5A5A;
     transform: scale(1.1,1.1);
 }
+
+@media (max-width: 520px){
+    .myAccountH1{
+        margin-top: 100px;
+    }
+    .listH2{
+        top: 150px;
+        right: 0;
+    }
+}

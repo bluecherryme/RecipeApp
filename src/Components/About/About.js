@@ -8,7 +8,11 @@ export default class About extends Component{
         return(
             <div className="About">
             <Nav/>
-                <h1>About</h1>
+                <h1 id="about">About</h1>
+                <div className="info">
+                    <p>This page was built as a personal project for DevMountain Bootcamp in July/August 2017.
+                     </p>
+                </div>
                 <h2>Technologies used to build this page:</h2>
                 <div className="icons">
                     <img src={require('./../../img/html5-icon-1.png')} alt='html5'/>
@@ -23,9 +27,9 @@ export default class About extends Component{
                     <img src={require('./../../img/git.png')} alt='Git'/>
                     <img src={require('./../../img/github.png')} alt='Github'/>
                 </div>
-                <h2 className='here-h2'>Have a look at the <span>CODE</span>  that runs this page <br/>
-                    <a className='here'
-                     href='https://github.com/bluecherryme/RecipeApp'>HERE</a>
+                <h2 className='here-h2'>Have a look at the <a className='here'
+                href='https://github.com/bluecherryme/RecipeApp'>CODE</a>  that runs this page. <br/>
+                    
                 </h2>
                 <Footer/>
             </div>

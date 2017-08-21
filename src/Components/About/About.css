@@ -1,10 +1,29 @@
 .About{
     text-align: center;
+    background-color: rgba(153,161,51,0.8);
+    color: white;
 }
+#about{
+    font-size: 80px;
+    margin-top: 0;
+    padding-top: 100px;
+ }
 
 .About>h2{
     text-decoration: underline;
     padding: 20px;
+}
+
+.info{
+    max-width: 700px;;
+    margin: 0 auto !important;
+    color: #aaa;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    -webkit-box-shadow: 10px 10px 60px -17px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 60px -17px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 60px -17px rgba(0,0,0,0.75);
 }
 
 
@@ -16,17 +35,29 @@ img{
 
 .here{
     color: red;
+
+    
 }
 
 .here:hover{
     transform: scale(1.1,1.1);
-    color: black;
+    color:  white;
+    text-decoration: underline;
 }
 
 .here-h2{
     margin-bottom: 80px;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    
 }
 
 .here-h2 span{
     color: red;
+}
+
+@media (max-width: 520px){
+    .info{
+        max-width: 90vw;
+    }
 }

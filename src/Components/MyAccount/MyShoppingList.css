@@ -1,13 +1,15 @@
+
 .list{
     background-color: #CE5A5A;
     color: white;
-    width: 40vw;
-    padding: 40px 50px;
+    width: 500px;
+    height: auto;
+    padding: 40px 50px 120px 50px;
     text-align: left;
     position: absolute;
+    overflow: auto;
     top: 100px;
     left: 300px;
-    overflow: hidden;
     z-index: 4;
 }
 
@@ -76,12 +78,16 @@
 }
 
 .btn-list{
-    display: block;
-    margin: 40px -100px auto 190px;
-    font-weight: bold;
-    border: 2px solid white;
-    height: 40px;
+    height: 50px; 
+    width: 380px;  
+    border: 1px solid white;
+    background-color: none;  
+    position: absolute;
+    right: 0;
+    bottom:20px;
     border-right: none;
+    margin: 10px auto;
+
 }
 
 .btn-ls{
@@ -95,4 +101,47 @@
 
 .btn-list>.btn-ls:focus{
     outline: none;
+}
+
+@media (max-width: 520px){
+    .list{
+        display: flex;
+        flex-direction: column;
+        width: 94vw;
+        top: 10px;
+        left: 2vw;
+        overflow: auto;
+        padding: 40px 5px 120px 5px;   
+    }
+
+    .addItem{
+        margin-top: -2px;
+        margin-bottom: 20px;
+    }
+
+    .list h2{
+        margin-left: 20px;
+    }
+
+    .list>img{
+        width: 18px;
+        height: 18px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .list>ul{
+        padding-right: 15px;
+    }
+
+    .btn-list{
+        margin: 0;
+        display: flex;
+        flex-direction: column;  
+        border: none;
+        width: 80vw;
+        margin-right: 10vw;
+        height: auto;
+        background-color: rgba(0,0,0,0.1); 
+    }
 }

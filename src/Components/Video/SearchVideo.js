@@ -56,7 +56,7 @@ export default class Video extends Component{
                         <img className='search-icon' src={require('./../../img/search.svg')} alt='search'/>
                     </button>
                 </form>
-                <div class="video-container">       
+                <div className="video-container">       
                     <iframe src={`http://www.youtube.com/embed/${this.state.Video}`}
                         title="video" width={screenWidth<560?375:560} height={screenWidth<560?210.9375:315} frameBorder="0" allowFullScreen>
                     </iframe>

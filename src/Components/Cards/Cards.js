@@ -4,6 +4,7 @@ import SingleCard from './SingleCard/SingleCard';
 import RecipeDetail from './RecipeDetail/RecipeDetail';
 import {getRecipesByName} from './../../redux/getSearchResults';
 import {getRandomRecipe} from './../../redux/getRecipeById';
+import {HashLink} from 'react-router-hash-link';
 import './Cards.css';
 
 
@@ -58,9 +59,9 @@ class Cards extends Component{
     render(){
         var recipes = this.props.recipes.searchResults;
         return(
-            <div className="cards">
-                <h1>RECIPES</h1>
-                <div className='cards-container'>           
+            <div className="cards" id="cards">
+                <h1 id='cards-container'>RECIPES</h1>
+                <div className='cards-container' >           
                 {   recipes.results //search by name
                     ?
                     (recipes.results.map(recipe=>{
@@ -84,10 +85,10 @@ class Cards extends Component{
                     :
                     <button className="btn scew"
                         onClick={()=>this.incrementSliceIndex()}
-                        >See More
+                        ><HashLink className='hashLink' to="/#cards-container">See Moore</HashLink>
                     </button>
                 }                    
-                    <button onClick={()=>window.scrollBy(0,-1000)} className="btn scew">Search Again</button>
+                    <button className="btn scew"><HashLink className='hashLink' to="/#search">Search Again</HashLink></button>
                     <button className="btn scew"
                       onClick={()=>this.getRandom()}
                         >Random Recipe

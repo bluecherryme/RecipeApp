@@ -13,17 +13,36 @@ footer{
     font-family: 'Overpass Mono', monospace;
     padding-left: 80px;
 }
+.over .link{
+    text-decoration: none;
+    font-size: 18px;
+    color: #aaa;
+}
 
 .over span{
     display: block;
     padding: 10px;
 }
 
-.over span:hover{
-    color: rgba(255,100,100,0.9);
+.over span:hover, .over .link:hover{
+    color: rgba(255, 99, 99, 0.90);
     transform: scale(1.1,1.1);
+    border-bottom: rgba(255, 99, 99, 0.90);
 }
 
 .left, .right{
     padding: 40px;
+}
+
+#login-btn{
+    font-size: inherit;
+    text-decoration: inherit;
+    color: inherit;
+
+}
+
+@media (max-width: 520px){
+    .over{
+        padding-left: 0;
+    }
 }

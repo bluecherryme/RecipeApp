@@ -65,46 +65,48 @@ class MyShoppingList extends Component{
     render(){
         var {clientid} = this.props.currentUser;
         return(
-            <div className="list">
-                <img onClick={()=>this.props.toggleShow()}
-                 src={require('./../../img/close.svg')}/>            
-                <h2>My Shopping List</h2>
-                <ul>
-                    {this.props.shoppingList.map((item,index)=>{
-                        return <li key={index}>
-                        {item.item}
-                        <button
-                          onClick={()=>this.props.deleteItem(item.item)}
-                             className="delete">
-                             <img src={require('./../../img/close.svg')}/>
-                             </button>
-                        </li>
-                    })}
-                </ul>
-                <form 
-                    className="addItem"
-                    onSubmit={(e)=>this.handleSubmit(e,this.state.value)}
-                    >
-                    
-                    <input 
-                    type="text" 
-                    className="search-field add-item"
-                    placeholder='add another item'
-                    value={ this.state.value }   
-                    onChange= {(e)=>this.handleChange(e.target.value) }             
-                    />
-                    <button className="search-btn btn add">
-                        ADD 
-                    </button>
-                </form>
-                <div className='btn-list'>
-                    <button className="scew btn-ls"
-                        onClick={()=>this.clearList(clientid)}>Clear All
-                    </button>
-                    <button className="scew btn-ls"
-                        onClick={()=>this.saveShoppingList(this.props.shoppingList,clientid)}
-                        >Save
-                    </button>
+            <div className="modal-ctn">
+                <div className="list">
+                    <img onClick={()=>this.props.toggleShow()}
+                    src={require('./../../img/close.svg')}/>            
+                    <h2>My Shopping List</h2>
+                    <ul>
+                        {this.props.shoppingList.map((item,index)=>{
+                            return <li key={index}>
+                            {item.item}
+                            <button
+                            onClick={()=>this.props.deleteItem(item.item)}
+                                className="delete">
+                                <img src={require('./../../img/close.svg')}/>
+                                </button>
+                            </li>
+                        })}
+                    </ul>
+                    <form 
+                        className="addItem"
+                        onSubmit={(e)=>this.handleSubmit(e,this.state.value)}
+                        >
+                        
+                        <input 
+                        type="text" 
+                        className="search-field add-item"
+                        placeholder='add another item'
+                        value={ this.state.value }   
+                        onChange= {(e)=>this.handleChange(e.target.value) }             
+                        />
+                        <button className="search-btn btn add">
+                            ADD 
+                        </button>
+                    </form>
+                    <div className='btn-list'>
+                        <button className="scew btn-ls"
+                            onClick={()=>this.clearList(clientid)}>Clear All
+                        </button>
+                        <button className="scew btn-ls"
+                            onClick={()=>this.saveShoppingList(this.props.shoppingList,clientid)}
+                            >Save
+                        </button>
+                    </div>
                 </div>
             </div>
         );

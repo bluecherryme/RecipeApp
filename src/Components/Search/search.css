@@ -80,6 +80,11 @@ input::placeholder{
 }
 
 @media (max-width: 520px){
+
+    .search{
+        height: 50vh;
+    }
+    
     h1{
         font-size: 70px;
     }

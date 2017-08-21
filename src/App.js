@@ -11,7 +11,6 @@ class App extends Component {
       <div className="App">
         <Home/>
         <Search/>
-        <Video/>
         <Footer/>
       </div>
     );
