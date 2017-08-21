@@ -38,6 +38,7 @@ class RecipeDetail extends Component{
     console.log('currentUser',this.props.currentUser);
     
         return(
+            <div className="modal-ctn">
             <div className='recipe-detail'>
                 <img onClick={()=>this.props.showRecipe()}
                     className='close' src={require('./../../../../img/close.svg')} alt='search'
@@ -93,6 +94,7 @@ class RecipeDetail extends Component{
                     null
                     }                    
                 </div>
+            </div>
             </div>
         );
     }

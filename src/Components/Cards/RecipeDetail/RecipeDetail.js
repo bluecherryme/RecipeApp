@@ -63,74 +63,76 @@ class RecipeDetail extends Component{
     var {clientid} = this.props.currentUser;
     
         return(
-            <div className='recipe-detail'>
-                <img onClick={()=>this.props.hideRecipe()}
-                    className='close' src={require('./../../../img/close.svg')} alt='search'
-                />
-                <h2>{title}</h2>
-                <div className='recipe-content'>
-                    <div className="ingredients">
-                        <div>
-                            <img src={image} alt="Current Recipe"/>
-                            <h2>Ingredients</h2>
-                            <ul>
-                                {extendedIngredients.map((ingredient,index)=>
-                                    <li key={index}>
-                                        {ingredient.originalString}
-                                    </li>
-                                )}
-                            </ul>
+            <div className="modal-ctn">
+                <div className='recipe-detail'>
+                    <img onClick={()=>this.props.hideRecipe()}
+                        className='close' src={require('./../../../img/close.svg')} alt='search'
+                    />
+                    <h2>{title}</h2>
+                    <div className='recipe-content'>
+                        <div className="ingredients">
+                            <div>
+                                <img src={image} alt="Current Recipe"/>
+                                <h2>Ingredients</h2>
+                                <ul>
+                                    {extendedIngredients.map((ingredient,index)=>
+                                        <li key={index}>
+                                            {ingredient.originalString}
+                                        </li>
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="instructions">
+                        <h3 className="insH3">Instructions</h3>
+                            {
+                                instructions
+                                ?
+                                <div className="instructionsContent">
+                                    <p>{instructions}</p>
+                                    <p>likes: {aggregateLikes}
+                                    {' '}servings: {servings}
+                                    {' '}preperation time: {readyInMinutes} minutes</p>
+                                </div>
+                                :
+                                <div>
+                                    <p>View full instructions </p>
+                                    <button className='btn-here'><a href={sourceUrl}>here</a></button>
+                                </div>
+                            }
                         </div>
                     </div>
-                    <div className="instructions">
-                    <h3 className="insH3">Instructions</h3>
-                        {
-                            instructions
-                            ?
-                            <div className="instructionsContent">
-                                <p>{instructions}</p>
-                                <p>likes: {aggregateLikes}
-                                {' '}servings: {servings}
-                                {' '}preperation time: {readyInMinutes} minutes</p>
-                            </div>
-                            :
-                            <div>
-                                <p>View full instructions </p>
-                                <button className='btn-here'><a href={sourceUrl}>here</a></button>
-                            </div>
-                        }
+                    <div className="btn-recipe">
+                        <button className="save scew btn" 
+                        onClick={()=>this.saveAndToggle(id,title,extendedIngredients,instructions,sourceUrl,aggregateLikes,image,servings,readyInMinutes,clientid)}>
+                            save recipe</button>
+                        <button className="addToShoppingList scew btn"
+                            onClick={()=>this.submitIngredient(extendedIngredients,clientid)}
+                            >add to shopping list
+                        </button>  
+                        {   
+                        (this.state.showSave && clientid)
+                        ?  
+                        <div className="recipe-saved">
+                        Recipe has been saved to your account
+                        <img onClick={()=>this.toggleSave()}
+                        className='close-small' src={require('./../../../img/close.svg')} alt='search'/>                    
+                        </div> 
+                        :
+                        null
+                        }   
+                        {   
+                        (this.state.showAdd && clientid)
+                        ?  
+                        <div className="recipe-saved">
+                        Ingredients have been saved to your Shoppinglist.
+                        <img onClick={()=>this.toggleAdd()}
+                        className='close-small' src={require('./../../../img/close.svg')} alt='search'/>                    
+                        </div> 
+                        :
+                        null
+                        }         
                     </div>
-                </div>
-                <div className="btn-recipe">
-                    <button className="save scew btn" 
-                    onClick={()=>this.saveAndToggle(id,title,extendedIngredients,instructions,sourceUrl,aggregateLikes,image,servings,readyInMinutes,clientid)}>
-                        save recipe</button>
-                    <button className="addToShoppingList scew btn"
-                        onClick={()=>this.submitIngredient(extendedIngredients,clientid)}
-                        >add to shopping list
-                    </button>  
-                    {   
-                    (this.state.showSave && clientid)
-                    ?  
-                    <div className="recipe-saved">
-                    Recipe has been saved to your account
-                    <img onClick={()=>this.toggleSave()}
-                    className='close-small' src={require('./../../../img/close.svg')} alt='search'/>                    
-                    </div> 
-                    :
-                    null
-                    }   
-                    {   
-                    (this.state.showAdd && clientid)
-                    ?  
-                    <div className="recipe-saved">
-                    Ingredients have been saved to your Shoppinglist.
-                    <img onClick={()=>this.toggleAdd()}
-                    className='close-small' src={require('./../../../img/close.svg')} alt='search'/>                    
-                    </div> 
-                    :
-                    null
-                    }         
                 </div>
             </div>
         );
