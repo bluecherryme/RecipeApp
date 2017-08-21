@@ -14,7 +14,7 @@ class SingleCard extends Component{
     }
 
      deleteRecipe(clientid,recipeid){
-        this.props.deleteRecipe(recipeid);
+        this.props.deleteRecipe(recipeid);console.log('clientid', clientid);
         axios.delete(`/api/deleteRecipe?clientid=${clientid}&recipeid=${recipeid}`)
         .then(console.log('recipe deleted succesfully'))
         .catch(err=>console.log(err));
@@ -23,7 +23,7 @@ class SingleCard extends Component{
     render(){
         //const userid = '103777885688777289032';
         var {id,title,readyinminutes} = this.props.recipe;
-        var clientid = this.props.clientid;
+        var {clientid} = this.props.currentUser;        
         return(
             <div>
                 <button
@@ -45,6 +45,11 @@ class SingleCard extends Component{
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+      currentUser: state.currentUser.currentUser.data || {},
+    }
+  }
 
-export default connect(null,{getCurrentRecipe, deleteRecipe})(SingleCard);
+export default connect(mapStateToProps,{getCurrentRecipe, deleteRecipe})(SingleCard);
 
