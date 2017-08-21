@@ -32,3 +32,9 @@
     display: flex;
     justify-content: flex-end;
 }
+
+@media (max-width: 520px){
+    .link-container{
+        justify-content: space-between;
+    }
+}

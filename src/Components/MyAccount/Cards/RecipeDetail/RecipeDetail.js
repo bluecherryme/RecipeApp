@@ -44,6 +44,7 @@ class RecipeDetail extends Component{
                     className='close' src={require('./../../../../img/close.svg')} alt='search'
                 />
                 <h2>{title}</h2>
+                <img className="img-small-screen" src={image} alt="Current Recipe"/>                
                 <div className='recipe-content'>
                     <div className="ingredients">
                         <div>
