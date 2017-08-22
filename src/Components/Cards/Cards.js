@@ -85,7 +85,7 @@ class Cards extends Component{
                     :
                     <button className="btn scew"
                         onClick={()=>this.incrementSliceIndex()}
-                        ><HashLink className='hashLink' to="/#cards-container">See Moore</HashLink>
+                        ><HashLink className='hashLink' to="/#cards-container">See More</HashLink>
                     </button>
                 }                    
                     <button className="btn scew"><HashLink className='hashLink' to="/#search">Search Again</HashLink></button>
