@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {getCurrentRecipe} from './../../../redux/getRecipeById';
 import './SingleCard.css';
 
+const windowWidth = window.innerWidth;
 
 class SingleCard extends Component{
     getRecipeDetail(id){
@@ -31,7 +32,13 @@ class SingleCard extends Component{
                                 <p>prep-time: {readyInMinutes} minutes</p>
                             }
                                                                         
-                        </div>     
+                        </div>   
+                        {windowWidth < 400 
+                        ?
+                        <div className="smallOverlay">{title}</div>
+                        :
+                        null
+                        }
                     </div>                              
                 </div>
             </div>

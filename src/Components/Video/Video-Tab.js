@@ -40,6 +40,7 @@ export default class Video extends Component{
 
     componentDidMount() {
         this.getVideo(null,'almazan kitchen');
+        window.scroll(0,0);
     }
     
 

@@ -68,9 +68,11 @@ a{
     .cookH1{
         font-size: 100px;
     }
-
     .heading2{
         width: 80vw;
         padding: 10px;
+    }
+    .heading2>p{
+        font-size: 14px;
     }
 }

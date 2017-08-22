@@ -5,6 +5,8 @@ import {deleteRecipe} from './../../../../redux/getSavedRecipes';
 import axios from 'axios';
 import './single.css';
 
+const windowWidth = window.innerWidth;
+
 
 class SingleCard extends Component{
 
@@ -38,7 +40,13 @@ class SingleCard extends Component{
                     <div className="overlay-card rel" onClick={()=>this.showRecipe(id)}>
                         <p>{title}</p>
                         <p>prep-time: {readyinminutes} minutes</p>                                                                    
-                    </div>                                   
+                    </div> 
+                    {windowWidth < 400 
+                        ?
+                        <div className="smallOverlay">{title}</div>
+                        :
+                        null
+                    }                                  
                 </div>
             </div>
         );

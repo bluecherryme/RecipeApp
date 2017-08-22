@@ -4,6 +4,11 @@ import Footer from './../Footer/footer';
 import './About.css';
 
 export default class About extends Component{
+
+    componentDidMount(){
+        window.scroll(0,0);
+    }
+    
     render(){
         return(
             <div className="About">
