@@ -62,11 +62,15 @@ a{
 }
 
 @media (max-width: 520px){
+    .home{
+        background-position: 10% 50%;
+    }
     .cookH1{
         font-size: 100px;
     }
 
     .heading2{
-        width: 100vw;
+        width: 80vw;
+        padding: 10px;
     }
 }

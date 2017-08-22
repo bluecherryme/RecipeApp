@@ -78,7 +78,7 @@ passport.deserializeUser(function(user, done) {
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', 
-{ successRedirect: 'http://localhost:3000/'}));
+{ successRedirect: config.successRedirect}));
 
 app.get('/auth/me', function(req, res) {
   if (!req.user) {
@@ -90,7 +90,7 @@ app.get('/auth/me', function(req, res) {
 
 app.get('/auth/logout', function(req, res) {
   req.logout();
-  res.redirect('http://localhost:3000/');
+  res.redirect(config.successRedirect);
 })  //endpoint to logout out
 
 //database
