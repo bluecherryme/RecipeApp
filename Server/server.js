@@ -59,7 +59,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.use( express.static( `${__dirname}/../build` ) );
+app.use( express.static( `${__dirname}/../build` ) );
 
 //AUTH0
 
@@ -114,6 +114,12 @@ app.get('/api/shoppinglist', shoppingListController.getShoppingList);
 
 //DELETE SHOPPINGLIST
 app.delete('/api/delete', shoppingListController.deleteShoppingList);
+
+const path = require('path');
+
+app.get('/*', (req,res)=>{
+	res.sendFile(path.join(__dirname,'..','build','index.html'));
+})
 
 app.listen(3001, function(){
 	console.log('listening on port 3001');
