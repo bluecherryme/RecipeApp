@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getCurrentUser} from './../../redux/setCurrentUser';
 import './Navbar.css';
+import {LoginRoute} from './../../API-Key';
+import {LogoutRoute} from './../../API-Key';
 
 
 class Navbar extends Component{
@@ -23,14 +25,14 @@ class Navbar extends Component{
               ?
               <div className='logged-in'>
               <Link className="link" to={'/MyAccount'}>MyAccount</Link>
-              <a href='http://localhost:3001/auth/logout'>
+              <a href={LogoutRoute}>
                 <button 
                   className='btn btn-log'>Log out
                 </button>
               </a>   
               </div>
               :
-              <a className='login-btn' href='http://localhost:3001/auth'>
+              <a className='login-btn' href={LoginRoute}>
                 <button 
                   className='btn btn-log'>Log in
                 </button>
